@@ -1,0 +1,1340 @@
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anil Kumar - Python Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+      }
+
+      /* Fade Up Animation */
+      .fade-in-up {
+        opacity: 0;
+        transform: translateY(20px);
+        transition:
+          opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .fade-in-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Stagger Delays */
+      .delay-100 {
+        transition-delay: 100ms;
+      }
+      .delay-200 {
+        transition-delay: 200ms;
+      }
+      .delay-300 {
+        transition-delay: 300ms;
+      }
+      .delay-500 {
+        transition-delay: 500ms;
+      }
+
+      /* Custom Backgrounds */
+      .bg-dots {
+        background-color: #ffffff;
+        background-image: radial-gradient(#e4e4e7 1px, transparent 1px);
+        background-size: 24px 24px;
+      }
+
+      /* Ambient Blobs Animation */
+      @keyframes blob {
+        0% {
+          transform: translate(0px, 0px) scale(1);
+        }
+        33% {
+          transform: translate(30px, -50px) scale(1.1);
+        }
+        66% {
+          transform: translate(-20px, 20px) scale(0.9);
+        }
+        100% {
+          transform: translate(0px, 0px) scale(1);
+        }
+      }
+      .animate-blob {
+        animation: blob 10s infinite;
+      }
+      .animation-delay-2000 {
+        animation-delay: 2s;
+      }
+      .animation-delay-4000 {
+        animation-delay: 4s;
+      }
+
+      /* Floating Animation for Cards */
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-5px);
+        }
+      }
+      .animate-float {
+        animation: float 6s ease-in-out infinite;
+      }
+      .animate-float-delayed {
+        animation: float 7s ease-in-out 1s infinite;
+      }
+      .animate-float-slow {
+        animation: float 8s ease-in-out 2s infinite;
+      }
+
+      /* Slow Spin for Rings */
+      @keyframes spin-slow {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      .animate-spin-slow {
+        animation: spin-slow 20s linear infinite;
+      }
+      .animate-spin-reverse {
+        animation: spin-slow 25s linear infinite reverse;
+      }
+
+      /* Scroller */
+      @keyframes scroll {
+        to {
+          transform: translate(calc(-50% - 1rem));
+        }
+      }
+      .scroller {
+        mask-image: linear-gradient(
+          to right,
+          transparent,
+          white 10%,
+          white 90%,
+          transparent
+        );
+        -webkit-mask-image: linear-gradient(
+          to right,
+          transparent,
+          white 10%,
+          white 90%,
+          transparent
+        );
+      }
+      .scroller-inner {
+        width: max-content;
+        flex-wrap: nowrap;
+        animation: scroll 40s linear infinite;
+      }
+      .scroller:hover .scroller-inner {
+        animation-play-state: paused;
+      }
+
+      /* Shimmer Effect */
+      .shimmer {
+        position: relative;
+        overflow: hidden;
+      }
+      .shimmer::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        transform: translateX(-100%);
+        background-image: linear-gradient(
+          85deg,
+          transparent 0,
+          rgba(255, 255, 255, 0.3) 25%,
+          rgba(255, 255, 255, 0.3) 50%,
+          transparent 100%
+        );
+        z-index: 20;
+        transition: transform 0.5s;
+        pointer-events: none;
+      }
+      .group:hover .shimmer::after {
+        transform: translateX(100%);
+        transition: transform 0.7s ease-in-out;
+      }
+
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+
+      @keyframes shimmer {
+        0% { background-position: -200% 0; }
+        100% { background-position: 200% 0; }
+      }
+      .animate-shimmer {
+        animation: shimmer 8s linear infinite;
+      }
+      @keyframes float {
+        0%, 100% { transform: translateY(0) rotate(0); }
+        50% { transform: translateY(-20px) rotate(5deg); }
+      }
+      @keyframes float-delayed {
+        0%, 100% { transform: translateY(0) rotate(0); }
+        50% { transform: translateY(-15px) rotate(-5deg); }
+      }
+      .animate-float {
+        animation: float 6s ease-in-out infinite;
+      }
+      .animate-float-delayed {
+        animation: float-delayed 7s ease-in-out infinite;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-white text-zinc-900 antialiased selection:bg-zinc-900 selection:text-white overflow-x-hidden"
+  >
+    <!-- Background Ambient Gradients -->
+    <div class="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
+      <div
+        class="absolute top-0 left-1/4 w-96 h-96 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"
+      ></div>
+      <div
+        class="absolute top-0 right-1/4 w-96 h-96 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"
+      ></div>
+      <div
+        class="absolute -bottom-32 left-1/3 w-96 h-96 bg-emerald-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"
+      ></div>
+      <div class="absolute inset-0 bg-dots opacity-60"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav
+      class="fixed top-0 left-0 right-0 z-50 bg-white/70 backdrop-blur-xl border-b border-zinc-200/50 transition-all duration-300"
+    >
+      <div
+        class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between"
+      >
+        <a
+          href="#"
+          class="flex items-center gap-2 group hover:scale-105 transition-transform duration-300"
+        >
+          <div
+            class="w-8 h-8 bg-gradient-to-br from-zinc-50 to-zinc-100 rounded-lg flex items-center justify-center border border-zinc-200 group-hover:border-zinc-300 shadow-sm transition-colors"
+          >
+            <span class="font-bold text-sm tracking-tighter text-zinc-800"
+              >AN</span
+            >
+          </div>
+        </a>
+
+        <div
+          class="hidden md:flex items-center gap-1 bg-zinc-50/80 p-1.5 rounded-full border border-zinc-200/60 shadow-inner"
+        >
+          <a
+            href="#home"
+            class="px-4 py-1.5 text-xs font-medium text-zinc-600 hover:text-zinc-900 hover:bg-white hover:shadow-sm rounded-full transition-all duration-300"
+            >Overview</a
+          >
+          <a
+            href="#skills-map"
+            class="px-4 py-1.5 text-xs font-medium text-zinc-600 hover:text-zinc-900 hover:bg-white hover:shadow-sm rounded-full transition-all duration-300"
+            >Skills Map</a
+          >
+          <a
+            href="#projects"
+            class="px-4 py-1.5 text-xs font-medium text-zinc-600 hover:text-zinc-900 hover:bg-white hover:shadow-sm rounded-full transition-all duration-300"
+            >Live Work</a
+          >
+        </div>
+
+        <a
+          href="#contact"
+          class="group relative overflow-hidden flex items-center gap-2 text-xs font-medium bg-zinc-900 text-white px-5 py-2 rounded-full hover:bg-zinc-800 transition-all shadow-lg shadow-zinc-200 hover:shadow-zinc-300 active:scale-95 shimmer"
+        >
+          <iconify-icon
+            icon="solar:letter-linear"
+            width="16"
+            class="relative z-10"
+          ></iconify-icon>
+          <span class="relative z-10">Hire Me</span>
+        </a>
+      </div>
+    </nav>
+
+    <main class="relative pt-32 pb-24 px-6 min-h-screen overflow-hidden">
+      <!-- Background Decorative Elements -->
+      <div class="absolute inset-0 pointer-events-none -z-10">
+        <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-50/50 rounded-full blur-[120px] animate-pulse"></div>
+        <div class="absolute bottom-[20%] right-[-5%] w-[30%] h-[30%] bg-emerald-50/40 rounded-full blur-[100px] animate-pulse delay-700"></div>
+        
+        <!-- Floating Tech Icons (Subtle) -->
+        <div class="absolute top-[15%] right-[15%] opacity-[0.03] animate-float">
+          <iconify-icon icon="logos:python" width="120"></iconify-icon>
+        </div>
+        <div class="absolute bottom-[30%] left-[10%] opacity-[0.03] animate-float-delayed">
+          <iconify-icon icon="logos:fastapi" width="100"></iconify-icon>
+        </div>
+        <div class="absolute top-[40%] left-[5%] opacity-[0.02] animate-float">
+          <iconify-icon icon="logos:docker-icon" width="80"></iconify-icon>
+        </div>
+      </div>
+
+      <!-- Hero Section -->
+      <section id="home" class="relative max-w-4xl mx-auto text-center mb-32">
+        <div
+          class="fade-in-up inline-flex items-center gap-2 px-3 py-1 bg-white/80 backdrop-blur-sm border border-zinc-200 rounded-full shadow-sm mb-8 hover:border-emerald-200 transition-colors cursor-default"
+        >
+          <span class="relative flex h-2 w-2">
+            <span
+              class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"
+            ></span>
+            <span
+              class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"
+            ></span>
+          </span>
+          <span class="text-xs font-medium text-zinc-600 tracking-wide"
+            >Python Developer | FastAPI | Flask | RESTAPI | Docker</span
+          >
+        </div>
+
+        <h1
+          class="fade-in-up delay-100 text-6xl md:text-8xl font-black tracking-tighter text-zinc-900 mb-6 leading-[0.95] md:leading-[0.9]"
+        >
+          ANIL <span class="text-zinc-400">KUMAR</span> <br />
+          <span
+            class="text-5xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-zinc-900 via-zinc-500 to-zinc-900 bg-[length:200%_auto] animate-shimmer"
+            >Python Developer.</span
+          >
+        </h1>
+
+        <p
+          class="fade-in-up delay-200 text-lg md:text-xl text-zinc-500 mb-8 leading-relaxed max-w-2xl mx-auto font-light"
+        >
+          Python Developer with <span class="text-zinc-900 font-medium">1+ year of professional experience</span> building
+          scalable <span class="text-zinc-900 font-medium">RESTful APIs</span> and backend services.
+          Skilled in <span class="text-zinc-900 font-medium">SOLID principles</span>, RBAC,
+          database design, and containerized deployments with <span class="text-zinc-900 font-medium">Docker</span>.
+        </p>
+
+        <div
+          class="fade-in-up delay-300 flex items-center justify-center gap-4"
+        >
+          <a
+            href="#projects"
+            class="group relative flex items-center gap-2 px-6 py-3 bg-zinc-900 text-white text-sm font-medium rounded-xl hover:bg-zinc-800 transition-all shadow-xl shadow-zinc-200/50 hover:translate-y-[-2px]"
+          >
+            <iconify-icon
+              icon="solar:folder-with-files-linear"
+              width="18"
+              class="transition-transform group-hover:rotate-12"
+            ></iconify-icon>
+            View Live Projects
+          </a>
+          <a
+            href="#skills-map"
+            class="group flex items-center gap-2 px-6 py-3 bg-white border border-zinc-200 text-zinc-700 text-sm font-medium rounded-xl hover:bg-zinc-50 hover:border-zinc-300 transition-all hover:translate-y-[-2px]"
+          >
+            <iconify-icon
+              icon="solar:server-square-linear"
+              width="18"
+              class="text-zinc-400 group-hover:text-zinc-600 transition-colors"
+            ></iconify-icon>
+            Tech Stack
+          </a>
+        </div>
+      </section>
+
+      <!-- Professional Summary Section -->
+      <section class="max-w-4xl mx-auto mb-32 fade-in-up">
+        <div class="bg-white/40 backdrop-blur-md border border-zinc-200 rounded-3xl p-8 md:p-12 shadow-sm hover:shadow-md transition-all duration-500">
+          <div class="flex items-center gap-4 mb-8">
+            <div class="w-14 h-14 bg-zinc-900 rounded-2xl flex items-center justify-center text-white shadow-xl shadow-zinc-200">
+              <iconify-icon icon="solar:user-id-bold" width="28"></iconify-icon>
+            </div>
+            <h2 class="text-3xl font-bold tracking-tight text-zinc-900">Professional Summary</h2>
+          </div>
+          <p class="text-zinc-600 leading-relaxed text-lg font-light">
+            Python Developer with <span class="text-zinc-900 font-medium">1+ year of professional experience</span> building scalable RESTful APIs and backend services using <span class="text-zinc-900 font-medium">Python (FastAPI, Flask)</span>. 
+            Skilled in <span class="text-zinc-900 font-medium">SOLID principles</span>, dependency injection, RBAC implementation, database design, background task processing (<span class="text-zinc-900 font-medium">Celery, Redis</span>), and containerized deployments with <span class="text-zinc-900 font-medium">Docker</span>. 
+            Experienced in deploying applications to cloud platforms and <span class="text-zinc-900 font-medium">optimizing production workflows</span>. 
+            Currently exploring AI/LLM integration, including agentic AI workflows and <span class="text-zinc-900 font-medium">LangChain</span>, applying intelligent automation to backend services.
+          </p>
+        </div>
+      </section>
+
+      <!-- Stats / Core Strengths -->
+      <section
+        class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 mb-32"
+      >
+        <!-- API Design -->
+        <div
+          class="fade-in-up delay-100 p-6 bg-white/60 backdrop-blur-sm rounded-2xl border border-zinc-100 shadow-sm flex flex-col items-center justify-center text-center hover:border-zinc-200 hover:bg-white hover:shadow-md transition-all duration-300 group"
+        >
+          <span
+            class="text-xl font-semibold tracking-tight text-zinc-900 mb-1 group-hover:scale-105 transition-transform duration-300"
+          >
+            Scalable API Design
+          </span>
+          <span
+            class="text-[10px] text-zinc-500 font-medium uppercase tracking-wider"
+          >
+            FastAPI · Flask · RESTful
+          </span>
+        </div>
+
+        <!-- Async Processing -->
+        <div
+          class="fade-in-up delay-200 p-6 bg-white/60 backdrop-blur-sm rounded-2xl border border-zinc-100 shadow-sm flex flex-col items-center justify-center text-center hover:border-zinc-200 hover:bg-white hover:shadow-md transition-all duration-300 group"
+        >
+          <span
+            class="text-xl font-semibold tracking-tight text-zinc-900 mb-1 group-hover:scale-105 transition-transform duration-300"
+          >
+            Async Task Processing
+          </span>
+          <span
+            class="text-[10px] text-zinc-500 font-medium uppercase tracking-wider"
+          >
+            Celery · Redis · Workers
+          </span>
+        </div>
+
+        <!-- Database -->
+        <div
+          class="fade-in-up delay-300 p-6 bg-white/60 backdrop-blur-sm rounded-2xl border border-zinc-100 shadow-sm flex flex-col items-center justify-center text-center hover:border-zinc-200 hover:bg-white hover:shadow-md transition-all duration-300 group"
+        >
+          <span
+            class="text-xl font-semibold tracking-tight text-zinc-900 mb-1 group-hover:scale-105 transition-transform duration-300"
+          >
+            DB Optimization
+          </span>
+          <span
+            class="text-[10px] text-zinc-500 font-medium uppercase tracking-wider"
+          >
+            PostgreSQL · Schema Design
+          </span>
+        </div>
+
+        <!-- Deployment -->
+        <div
+          class="fade-in-up delay-500 p-6 bg-white/60 backdrop-blur-sm rounded-2xl border border-zinc-100 shadow-sm flex flex-col items-center justify-center text-center hover:border-zinc-200 hover:bg-white hover:shadow-md transition-all duration-300 group"
+        >
+          <span
+            class="text-xl font-semibold tracking-tight text-zinc-900 mb-1 group-hover:scale-105 transition-transform duration-300"
+          >
+            Containerization
+          </span>
+          <span
+            class="text-[10px] text-zinc-500 font-medium uppercase tracking-wider"
+          >
+            Docker · Render · Cloud
+          </span>
+        </div>
+      </section>
+
+      <!-- Tech Stack (Bento Grid) -->
+      <section id="stack" class="max-w-6xl mx-auto mb-32">
+        <div class="flex items-center justify-between mb-8 px-2 fade-in-up">
+          <h2 class="text-2xl font-semibold tracking-tight">
+            Current Tech Focus
+          </h2>
+          <span
+            class="text-xs text-zinc-400 font-medium bg-zinc-50 px-2 py-1 rounded border border-zinc-100"
+            >Core Competencies</span
+          >
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Main Skill: Python Backend -->
+          <div
+            class="md:col-span-2 bg-gradient-to-br from-zinc-50 to-white border border-zinc-200 rounded-3xl p-8 relative overflow-hidden group hover:shadow-lg transition-all duration-500 fade-in-up delay-100 animate-float"
+          >
+            <!-- Hover Highlight -->
+            <div
+              class="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"
+            ></div>
+
+            <div class="relative z-10 h-full flex flex-col justify-between">
+              <div>
+                <div
+                  class="w-12 h-12 bg-white rounded-xl border border-zinc-100 flex items-center justify-center mb-4 shadow-sm text-blue-600 group-hover:scale-110 transition-transform duration-300"
+                >
+                  <iconify-icon
+                    icon="solar:code-square-linear"
+                    width="28"
+                  ></iconify-icon>
+                </div>
+                <h3 class="text-xl font-semibold mb-2 text-zinc-900">Backend Engineering</h3>
+                <p class="text-sm text-zinc-500 max-w-sm leading-relaxed">
+                  Specialized in building high-performance APIs with
+                  <strong>FastAPI</strong> and <strong>Flask</strong>.
+                  Expertise in database design, background processing with
+                  <strong>Celery/Redis</strong>, and scalable backend architecture.
+                  Knowledgeable in <strong>RBAC</strong>, <strong>JWT</strong>, and <strong>SOLID</strong> principles.
+                </p>
+              </div>
+            </div>
+            <!-- Decorative Icon -->
+            <div
+              class="absolute -bottom-10 -right-10 text-zinc-50 transform rotate-12 group-hover:rotate-0 group-hover:scale-110 transition-all duration-700"
+            >
+              <iconify-icon
+                icon="simple-icons:python"
+                width="200"
+              ></iconify-icon>
+            </div>
+          </div>
+
+          <!-- DevOps / Containerization -->
+          <div
+            class="bg-white border border-zinc-200 rounded-3xl p-8 flex flex-col justify-between hover:shadow-lg transition-all duration-500 fade-in-up delay-200 animate-float-delayed group"
+          >
+            <div
+              class="w-12 h-12 bg-zinc-50 rounded-xl border border-zinc-100 flex items-center justify-center shadow-sm text-emerald-600 group-hover:scale-110 transition-transform duration-300"
+            >
+              <iconify-icon
+                icon="simple-icons:docker"
+                width="28"
+              ></iconify-icon>
+            </div>
+            <div>
+              <h3 class="font-semibold mb-1 text-zinc-900">DevOps & Deployment</h3>
+              <p class="text-xs text-zinc-500">
+                Containerized deployments with <strong>Docker</strong>. Experienced in cloud platforms like <strong>Render</strong> and optimizing CI/CD workflows.
+              </p>
+            </div>
+          </div>
+
+          <!-- Database & Storage -->
+          <div
+            class="bg-white border border-zinc-200 rounded-3xl p-8 flex flex-col justify-between hover:shadow-lg transition-all duration-500 fade-in-up delay-300 animate-float-slow group"
+          >
+            <div
+              class="w-12 h-12 bg-zinc-50 rounded-xl border border-zinc-100 flex items-center justify-center shadow-sm text-amber-600 group-hover:scale-110 transition-transform duration-300"
+            >
+              <iconify-icon
+                icon="solar:database-linear"
+                width="28"
+              ></iconify-icon>
+            </div>
+            <div>
+              <h3 class="font-semibold mb-1 text-zinc-900">Database Design</h3>
+              <p class="text-xs text-zinc-500">
+                Proficient in <strong>PostgreSQL</strong> and <strong>SQLite</strong>. Expertise in schema optimization and complex query design.
+              </p>
+            </div>
+          </div>
+
+          <!-- Other Tech Focus -->
+          <div
+            class="md:col-span-2 bg-white border border-zinc-200 rounded-3xl p-8 relative overflow-hidden flex flex-col md:flex-row items-start md:items-center justify-between gap-6 hover:shadow-lg transition-all duration-500 fade-in-up delay-200 animate-float"
+          >
+            <div class="flex items-start gap-5 z-10 w-full">
+              <div
+                class="w-12 h-12 bg-zinc-50 rounded-xl border border-zinc-100 flex items-center justify-center shrink-0 shadow-sm text-zinc-900"
+              >
+                <iconify-icon
+                  icon="solar:layers-minimalistic-linear"
+                  width="28"
+                ></iconify-icon>
+              </div>
+              <div class="w-full">
+                <h3 class="font-semibold mb-3 text-zinc-900">
+                  Backend Ecosystem & Tools
+                </h3>
+
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="px-2.5 py-1 bg-zinc-50 border border-zinc-200 rounded-lg text-[11px] font-medium text-zinc-600"
+                  >
+                    Antigravity
+                  </span>
+                  <span
+                    class="px-2.5 py-1 bg-zinc-50 border border-zinc-200 rounded-lg text-[11px] font-medium text-zinc-600"
+                  >
+                    VS Code
+                  </span>
+                  <span
+                    class="px-2.5 py-1 bg-zinc-50 border border-zinc-200 rounded-lg text-[11px] font-medium text-zinc-600"
+                  >
+                    Jinja2
+                  </span>
+                  <span
+                    class="px-2.5 py-1 bg-zinc-50 border border-zinc-200 rounded-lg text-[11px] font-medium text-zinc-600"
+                  >
+                    Redis
+                  </span>
+                  <span
+                    class="px-2.5 py-1 bg-zinc-50 border border-zinc-200 rounded-lg text-[11px] font-medium text-zinc-600"
+                  >
+                    Celery
+                  </span>
+                  <span
+                    class="px-2.5 py-1 bg-zinc-50 border border-zinc-200 rounded-lg text-[11px] font-medium text-zinc-600"
+                  >
+                    Git/GitHub/GitLab
+                  </span>
+                  <span
+                    class="px-2.5 py-1 bg-zinc-50 border border-zinc-200 rounded-lg text-[11px] font-medium text-zinc-600"
+                  >
+                    Pydantic
+                  </span>
+                  <span
+                    class="px-2.5 py-1 bg-zinc-50 border border-zinc-200 rounded-lg text-[11px] font-medium text-zinc-600"
+                  >
+                    SQLAlchemy
+                  </span>
+                  <span
+                    class="px-2.5 py-1 bg-zinc-50 border border-zinc-200 rounded-lg text-[11px] font-medium text-zinc-600"
+                  >
+                    SOLID Principles
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- NEW SECTION: Skills Ecosystem Map -->
+      <section id="skills-map" class="max-w-6xl mx-auto mb-32 fade-in-up">
+        <div class="flex items-center justify-between mb-12 px-2">
+          <h2 class="text-2xl font-semibold tracking-tight">
+            Skills Ecosystem
+          </h2>
+          <span class="text-xs font-medium text-zinc-500"
+            >Inventory & Relationships</span
+          >
+        </div>
+
+        <!-- Map Container -->
+        <div
+          class="relative bg-white/50 border border-zinc-200 rounded-[2.5rem] p-8 md:p-16 overflow-hidden hover:border-zinc-300 transition-colors duration-500"
+        >
+          <!-- Orbit Rings (Visual connectors - Animated) -->
+          <div
+            class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-40"
+          >
+            <div
+              class="w-[300px] h-[300px] md:w-[500px] md:h-[500px] rounded-full border border-zinc-300 border-dashed animate-spin-slow"
+            ></div>
+          </div>
+          <div
+            class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-40"
+          >
+            <div
+              class="w-[200px] h-[200px] md:w-[320px] md:h-[320px] rounded-full border border-zinc-300 border-dashed animate-spin-reverse"
+            ></div>
+          </div>
+
+          <!-- Layout Grid: Central Node + Satellites -->
+          <div
+            class="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 items-center"
+          >
+            <!-- Left Satellite: Frontend/Design -->
+            <div class="flex flex-col gap-8 md:items-end order-2 md:order-1">
+              <!-- Group 1 -->
+              <div
+                class="group flex flex-col md:items-end gap-3 hover:translate-x-2 transition-transform duration-300"
+              >
+                <span
+                  class="text-[10px] font-bold text-blue-500 tracking-wider uppercase mb-1"
+                  >Development Stack</span
+                >
+                <div class="flex flex-wrap md:justify-end gap-2 max-w-[200px]">
+                  <span
+                    class="px-3 py-1 bg-white border border-zinc-200 text-zinc-600 rounded-full text-xs font-medium shadow-sm hover:scale-105 transition-transform"
+                    >Python</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-white border border-zinc-200 text-zinc-600 rounded-full text-xs font-medium shadow-sm hover:scale-105 transition-transform"
+                    >FastAPI / Flask</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-white border border-zinc-200 text-zinc-600 rounded-full text-xs font-medium shadow-sm hover:scale-105 transition-transform"
+                    >JavaScript</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-white border border-zinc-200 text-zinc-600 rounded-full text-xs font-medium shadow-sm hover:scale-105 transition-transform"
+                    >HTML/CSS</span
+                  >
+                </div>
+              </div>
+
+              <div
+                class="group flex flex-col md:items-end gap-3 hover:translate-x-2 transition-transform duration-300"
+              >
+                <span
+                  class="text-[10px] font-bold text-purple-500 tracking-wider uppercase mb-1"
+                >
+                  Authentication & Access Control
+                </span>
+                <div class="flex flex-wrap md:justify-end gap-2 max-w-[220px]">
+                  <span
+                    class="px-3 py-1 bg-white border border-zinc-200 text-zinc-600 rounded-full text-xs font-medium shadow-sm hover:scale-105 transition-transform"
+                  >
+                    JWT / Token Flows
+                  </span>
+                  <span
+                    class="px-3 py-1 bg-white border border-zinc-200 text-zinc-600 rounded-full text-xs font-medium shadow-sm hover:scale-105 transition-transform"
+                  >
+                    RBAC Implementation
+                  </span>
+                  <span
+                    class="px-3 py-1 bg-white border border-zinc-200 text-zinc-600 rounded-full text-xs font-medium shadow-sm hover:scale-105 transition-transform"
+                  >
+                    OAuth2 / Auth Flows
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Center Node: Experience Core -->
+            <div class="flex justify-center order-1 md:order-2 py-8 md:py-0">
+              <div
+                class="group w-36 h-36 md:w-44 md:h-44 rounded-full bg-white border border-zinc-200 shadow-2xl shadow-zinc-200/50 flex flex-col items-center justify-center text-center relative z-20 hover:scale-105 transition-all duration-500"
+              >
+                <!-- Glowing Pulse Behind -->
+                <div
+                  class="absolute -inset-4 bg-zinc-100/50 rounded-full -z-10 animate-pulse"
+                ></div>
+
+                <iconify-icon
+                  icon="solar:cpu-bold"
+                  class="text-zinc-800 mb-2 text-4xl group-hover:rotate-180 transition-transform duration-700"
+                ></iconify-icon>
+                <span class="text-xs font-bold text-zinc-900 tracking-tight"
+                  >EXPERIENCE</span
+                >
+
+                <!-- Connecting Dots (Decorative) -->
+                <div
+                  class="absolute top-1/2 -left-3 w-3 h-3 bg-blue-500 rounded-full border-2 border-white shadow-sm"
+                ></div>
+                <div
+                  class="absolute top-1/2 -right-3 w-3 h-3 bg-emerald-500 rounded-full border-2 border-white shadow-sm"
+                ></div>
+              </div>
+            </div>
+
+            <!-- Right Satellite: Backend/Logic -->
+            <div class="flex flex-col gap-8 items-start order-3">
+              <!-- Group 3 -->
+              <div
+                class="group flex flex-col items-start gap-3 hover:-translate-x-2 transition-transform duration-300"
+              >
+                <div class="flex items-center gap-2">
+                  <span
+                    class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"
+                  ></span>
+                  <span
+                    class="text-[10px] font-bold text-emerald-600 tracking-wider uppercase"
+                  >
+                    Backend Systems
+                  </span>
+                </div>
+
+                <div class="flex flex-wrap gap-2 max-w-[260px]">
+                  <!-- Primary -->
+                  <span
+                    class="px-3 py-1 bg-zinc-900 border border-zinc-900 text-white rounded-full text-xs font-medium shadow-sm"
+                  >
+                    Python / FastAPI
+                  </span>
+
+                  <!-- Secondary -->
+                  <span
+                    class="px-3 py-1 bg-white border border-zinc-200 text-zinc-600 rounded-full text-xs font-medium shadow-sm hover:scale-105 transition-transform"
+                  >
+                    Jinja2 / Templating
+                  </span>
+
+                  <!-- Tertiary -->
+                  <span
+                    class="px-3 py-1 bg-white border border-zinc-200 text-zinc-600 rounded-full text-xs font-medium shadow-sm hover:scale-105 transition-transform"
+                  >
+                    Celery / Redis / Background Tasks
+                  </span>
+
+                  <!-- Shared -->
+                  <span
+                    class="px-3 py-1 bg-white border border-zinc-200 text-zinc-600 rounded-full text-xs font-medium shadow-sm hover:scale-105 transition-transform"
+                  >
+                    SQL Server / Relational DBs
+                  </span>
+                </div>
+              </div>
+
+              <div
+                class="group flex flex-col items-start gap-3 hover:-translate-x-2 transition-transform duration-300"
+              >
+                <span
+                  class="text-[10px] font-bold text-amber-600 tracking-wider uppercase mb-1"
+                >
+                  DevOps & Tools
+                </span>
+                <div class="flex flex-wrap gap-2 max-w-[220px]">
+                  <span
+                    class="px-3 py-1 bg-white border border-zinc-200 text-zinc-600 rounded-full text-xs font-medium shadow-sm hover:scale-105 transition-transform"
+                  >
+                    Docker
+                  </span>
+                  <span
+                    class="px-3 py-1 bg-white border border-zinc-200 text-zinc-600 rounded-full text-xs font-medium shadow-sm hover:scale-105 transition-transform"
+                  >
+                    Render / Deployment
+                  </span>
+                  <span
+                    class="px-3 py-1 bg-white border border-zinc-200 text-zinc-600 rounded-full text-xs font-medium shadow-sm hover:scale-105 transition-transform"
+                  >
+                    Git / GitHub / CI-CD
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tools Inventory (Infinite Scroll) -->
+          <div
+            class="mt-16 pt-12 border-t border-zinc-100 scroller overflow-hidden w-full max-w-[800px] mx-auto"
+          >
+            <div class="flex items-center justify-center gap-2 mb-6">
+              <iconify-icon
+                icon="solar:wrench-linear"
+                class="text-zinc-400 text-xs"
+              ></iconify-icon>
+              <span
+                class="text-[10px] font-bold tracking-widest text-zinc-400 uppercase"
+                >Tools Inventory</span
+              >
+            </div>
+
+            <div class="scroller-inner flex gap-4 w-max">
+              <!-- Icon Set 1 -->
+              <div class="flex gap-4">
+                <div
+                  class="w-12 h-12 bg-zinc-50 border border-zinc-200 rounded-xl flex items-center justify-center text-zinc-400 hover:text-blue-500 hover:border-blue-200 hover:bg-white transition-all cursor-default group hover:scale-110 duration-300"
+                  title="Python"
+                >
+                  <iconify-icon
+                    icon="simple-icons:python"
+                    width="20"
+                  ></iconify-icon>
+                </div>
+                <div
+                  class="w-12 h-12 bg-zinc-50 border border-zinc-200 rounded-xl flex items-center justify-center text-zinc-400 hover:text-teal-600 hover:border-teal-200 hover:bg-white transition-all cursor-default group hover:scale-110 duration-300"
+                  title="FastAPI"
+                >
+                  <iconify-icon
+                    icon="simple-icons:fastapi"
+                    width="20"
+                  ></iconify-icon>
+                </div>
+                <div
+                  class="w-12 h-12 bg-zinc-50 border border-zinc-200 rounded-xl flex items-center justify-center text-zinc-400 hover:text-emerald-800 hover:border-emerald-200 hover:bg-white transition-all cursor-default group hover:scale-110 duration-300"
+                  title="Django"
+                >
+                  <iconify-icon
+                    icon="simple-icons:django"
+                    width="20"
+                  ></iconify-icon>
+                </div>
+                <div
+                  class="w-12 h-12 bg-zinc-50 border border-zinc-200 rounded-xl flex items-center justify-center text-zinc-400 hover:text-cyan-500 hover:border-cyan-200 hover:bg-white transition-all cursor-default group hover:scale-110 duration-300"
+                  title="React"
+                >
+                  <iconify-icon
+                    icon="simple-icons:react"
+                    width="20"
+                  ></iconify-icon>
+                </div>
+                <div
+                  class="w-12 h-12 bg-zinc-50 border border-zinc-200 rounded-xl flex items-center justify-center text-zinc-400 hover:text-blue-600 hover:border-blue-200 hover:bg-white transition-all cursor-default group hover:scale-110 duration-300"
+                  title="PostgreSQL"
+                >
+                  <iconify-icon
+                    icon="simple-icons:postgresql"
+                    width="20"
+                  ></iconify-icon>
+                </div>
+                <div
+                  class="w-12 h-12 bg-zinc-50 border border-zinc-200 rounded-xl flex items-center justify-center text-zinc-400 hover:text-blue-500 hover:border-blue-200 hover:bg-white transition-all cursor-default group hover:scale-110 duration-300"
+                  title="Docker"
+                >
+                  <iconify-icon
+                    icon="simple-icons:docker"
+                    width="20"
+                  ></iconify-icon>
+                </div>
+                <div
+                  class="w-12 h-12 bg-zinc-50 border border-zinc-200 rounded-xl flex items-center justify-center text-zinc-400 hover:text-orange-600 hover:border-orange-200 hover:bg-white transition-all cursor-default group hover:scale-110 duration-300"
+                  title="Git"
+                >
+                  <iconify-icon
+                    icon="simple-icons:git"
+                    width="20"
+                  ></iconify-icon>
+                </div>
+                <div
+                  class="w-12 h-12 bg-zinc-50 border border-zinc-200 rounded-xl flex items-center justify-center text-zinc-400 hover:text-sky-500 hover:border-sky-200 hover:bg-white transition-all cursor-default group hover:scale-110 duration-300"
+                  title="VS Code"
+                >
+                  <iconify-icon
+                    icon="simple-icons:visualstudiocode"
+                    width="20"
+                  ></iconify-icon>
+                </div>
+                <div
+                  class="w-12 h-12 bg-zinc-50 border border-zinc-200 rounded-xl flex items-center justify-center text-zinc-400 hover:text-purple-600 hover:border-purple-200 hover:bg-white transition-all cursor-default group hover:scale-110 duration-300"
+                  title="Figma"
+                >
+                  <iconify-icon
+                    icon="simple-icons:figma"
+                    width="20"
+                  ></iconify-icon>
+                </div>
+              </div>
+              <!-- Duplicate Icon Set for Infinite Loop -->
+              <div class="flex gap-4" aria-hidden="true">
+                <div
+                  class="w-12 h-12 bg-zinc-50 border border-zinc-200 rounded-xl flex items-center justify-center text-zinc-400 hover:text-blue-500 hover:border-blue-200 hover:bg-white transition-all cursor-default group hover:scale-110 duration-300"
+                  title="Python"
+                >
+                  <iconify-icon
+                    icon="simple-icons:python"
+                    width="20"
+                  ></iconify-icon>
+                </div>
+                <div
+                  class="w-12 h-12 bg-zinc-50 border border-zinc-200 rounded-xl flex items-center justify-center text-zinc-400 hover:text-teal-600 hover:border-teal-200 hover:bg-white transition-all cursor-default group hover:scale-110 duration-300"
+                  title="FastAPI"
+                >
+                  <iconify-icon
+                    icon="simple-icons:fastapi"
+                    width="20"
+                  ></iconify-icon>
+                </div>
+                <div
+                  class="w-12 h-12 bg-zinc-50 border border-zinc-200 rounded-xl flex items-center justify-center text-zinc-400 hover:text-emerald-800 hover:border-emerald-200 hover:bg-white transition-all cursor-default group hover:scale-110 duration-300"
+                  title="Django"
+                >
+                  <iconify-icon
+                    icon="simple-icons:django"
+                    width="20"
+                  ></iconify-icon>
+                </div>
+                <div
+                  class="w-12 h-12 bg-zinc-50 border border-zinc-200 rounded-xl flex items-center justify-center text-zinc-400 hover:text-cyan-500 hover:border-cyan-200 hover:bg-white transition-all cursor-default group hover:scale-110 duration-300"
+                  title="React"
+                >
+                  <iconify-icon
+                    icon="simple-icons:react"
+                    width="20"
+                  ></iconify-icon>
+                </div>
+                <div
+                  class="w-12 h-12 bg-zinc-50 border border-zinc-200 rounded-xl flex items-center justify-center text-zinc-400 hover:text-blue-600 hover:border-blue-200 hover:bg-white transition-all cursor-default group hover:scale-110 duration-300"
+                  title="PostgreSQL"
+                >
+                  <iconify-icon
+                    icon="simple-icons:postgresql"
+                    width="20"
+                  ></iconify-icon>
+                </div>
+                <div
+                  class="w-12 h-12 bg-zinc-50 border border-zinc-200 rounded-xl flex items-center justify-center text-zinc-400 hover:text-blue-500 hover:border-blue-200 hover:bg-white transition-all cursor-default group hover:scale-110 duration-300"
+                  title="Docker"
+                >
+                  <iconify-icon
+                    icon="simple-icons:docker"
+                    width="20"
+                  ></iconify-icon>
+                </div>
+                <div
+                  class="w-12 h-12 bg-zinc-50 border border-zinc-200 rounded-xl flex items-center justify-center text-zinc-400 hover:text-orange-600 hover:border-orange-200 hover:bg-white transition-all cursor-default group hover:scale-110 duration-300"
+                  title="Git"
+                >
+                  <iconify-icon
+                    icon="simple-icons:git"
+                    width="20"
+                  ></iconify-icon>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Work Experience Section -->
+      <section id="experience" class="max-w-6xl mx-auto mb-32 fade-in-up">
+        <div class="flex items-center justify-between mb-12 px-2">
+          <h2 class="text-2xl font-semibold tracking-tight">Professional Journey</h2>
+          <span class="text-xs font-medium text-zinc-500 uppercase tracking-widest">Experience</span>
+        </div>
+
+        <div class="relative pl-8 md:pl-0">
+          <!-- Central Line (Desktop) -->
+          <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-zinc-200 -translate-x-1/2"></div>
+          
+          <!-- Mobile Line -->
+          <div class="md:hidden absolute left-0 top-0 bottom-0 w-px bg-zinc-200"></div>
+
+          <!-- DCT Technology -->
+          <div class="relative mb-16 md:mb-24">
+            <!-- Timeline Dot -->
+            <div class="absolute left-[-36px] md:left-1/2 top-0 w-8 h-8 bg-zinc-900 border-4 border-white rounded-full -translate-x-1/2 z-10 hidden md:flex items-center justify-center text-white">
+              <iconify-icon icon="solar:case-minimalistic-bold" width="16"></iconify-icon>
+            </div>
+            <div class="md:hidden absolute left-0 top-0 w-6 h-6 bg-zinc-900 border-2 border-white rounded-full -translate-x-1/2 z-10 flex items-center justify-center text-white">
+               <iconify-icon icon="solar:case-minimalistic-bold" width="12"></iconify-icon>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
+              <!-- Left: Date & Title (Desktop side) -->
+              <div class="md:text-right">
+                <span class="inline-block px-3 py-1 bg-zinc-100 border border-zinc-200 rounded-full text-[10px] font-bold text-zinc-600 uppercase tracking-widest mb-3">
+                  Feb 2025 - Present
+                </span>
+                <h3 class="text-xl font-semibold text-zinc-900 mb-1">DCT Technology Pvt. Ltd.</h3>
+                <p class="text-blue-600 font-medium text-sm">Software Developer</p>
+              </div>
+
+              <!-- Right: Content -->
+              <div class="bg-white/40 backdrop-blur-sm border border-zinc-100 rounded-2xl p-6 hover:shadow-md transition-all duration-300">
+                <ul class="space-y-4">
+                  <li class="flex gap-3 text-sm text-zinc-600 leading-relaxed">
+                    <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-zinc-300 shrink-0"></span>
+                    <span>Designed, developed, and maintained <strong>RESTful APIs</strong> and backend services using <strong>Python (FastAPI, Flask)</strong>.</span>
+                  </li>
+                  <li class="flex gap-3 text-sm text-zinc-600 leading-relaxed">
+                    <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-zinc-300 shrink-0"></span>
+                    <span>Implemented <strong>role-based access control (RBAC)</strong> with JWT authentication to enhance security.</span>
+                  </li>
+                  <li class="flex gap-3 text-sm text-zinc-600 leading-relaxed">
+                    <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-zinc-300 shrink-0"></span>
+                    <span>Designed and optimized <strong>PostgreSQL database</strong> schemas, collaborating closely with teams for seamless integration.</span>
+                  </li>
+                  <li class="flex gap-3 text-sm text-zinc-600 leading-relaxed">
+                    <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-zinc-300 shrink-0"></span>
+                    <span>Containerized applications with <strong>Docker</strong> and deployed to cloud platforms using <strong>Render</strong>.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects Section -->
+      <section id="projects" class="max-w-6xl mx-auto mb-32">
+        <div class="flex items-center justify-between mb-8 px-2 fade-in-up">
+          <h2 class="text-2xl font-semibold tracking-tight text-zinc-900">
+            Live Production Work
+          </h2>
+          <span class="text-xs font-medium text-zinc-500 uppercase tracking-widest"
+            >Selected Projects</span
+          >
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Project 1: ReefSecure -->
+          <article
+            class="group bg-white rounded-2xl border border-zinc-200 overflow-hidden hover:shadow-xl hover:shadow-zinc-200/50 hover:border-zinc-300 transition-all duration-300 fade-in-up delay-100 shimmer"
+          >
+            <a
+              href="https://reefsecure.eu/"
+              target="_blank"
+              class="block h-48 bg-zinc-50 border-b border-zinc-100 relative overflow-hidden group-hover:bg-zinc-50/50 transition-colors"
+            >
+              <img
+                src="assets/images/reefsecure.png"
+                alt="ReefSecure Preview"
+                class="w-full h-full object-cover object-top opacity-90 group-hover:scale-110 group-hover:rotate-1 transition-all duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent pointer-events-none"
+              ></div>
+              <div
+                class="absolute top-3 right-3 px-2 py-0.5 bg-blue-100/80 backdrop-blur-sm border border-blue-200/50 rounded-full"
+              >
+                <span
+                  class="text-[10px] font-semibold text-blue-700 tracking-tight uppercase"
+                  >Security Platform</span
+                >
+              </div>
+            </a>
+            <div class="p-6">
+              <h3
+                class="font-semibold text-lg text-zinc-900 mb-2 group-hover:text-blue-600 transition-colors"
+              >
+                ReefSecure
+              </h3>
+              <p
+                class="text-xs text-zinc-500 font-medium uppercase tracking-wide mb-3"
+              >
+                Phishing Awareness Platform
+              </p>
+              <p class="text-sm text-zinc-500 leading-relaxed mb-6">
+                Designed end-to-end modules simulating phishing scenarios. Implemented async background tasks using <strong>Celery/Redis</strong> for email delivery.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="inline-flex items-center px-2 py-1 rounded text-[10px] font-medium bg-blue-50 text-blue-700 border border-blue-100"
+                  >FastAPI</span
+                >
+                <span
+                  class="inline-flex items-center px-2 py-1 rounded text-[10px] font-medium bg-purple-50 text-purple-700 border border-purple-100"
+                  >Celery</span
+                >
+                <span
+                  class="inline-flex items-center px-2 py-1 rounded text-[10px] font-medium bg-zinc-100 text-zinc-600 border border-zinc-200"
+                  >PostgreSQL</span
+                >
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2: RangersFx -->
+          <article
+            class="group bg-white rounded-2xl border border-zinc-200 overflow-hidden hover:shadow-xl hover:shadow-zinc-200/50 hover:border-zinc-300 transition-all duration-300 fade-in-up delay-200 shimmer"
+          >
+            <a
+              href="https://www.rangersfx.com/"
+              target="_blank"
+              class="block h-48 bg-zinc-50 border-b border-zinc-100 relative overflow-hidden group-hover:bg-zinc-50/50 transition-colors"
+            >
+              <img
+                src="assets/images/rangersfx.png"
+                alt="RangersFx Preview"
+                class="w-full h-full object-cover object-top opacity-90 group-hover:scale-110 group-hover:-rotate-1 transition-all duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent pointer-events-none"
+              ></div>
+              <div
+                class="absolute top-3 right-3 px-2 py-0.5 bg-emerald-100/80 backdrop-blur-sm border border-emerald-200/50 rounded-full"
+              >
+                <span
+                  class="text-[10px] font-semibold text-emerald-700 tracking-tight uppercase"
+                  >FinTech</span
+                >
+              </div>
+            </a>
+            <div class="p-6">
+              <h3
+                class="font-semibold text-lg text-zinc-900 mb-2 group-hover:text-emerald-600 transition-colors"
+              >
+                RangersFx
+              </h3>
+              <p
+                class="text-xs text-zinc-500 font-medium uppercase tracking-wide mb-3"
+              >
+                Financial / Trading Backend
+              </p>
+              <p class="text-sm text-zinc-500 leading-relaxed mb-6">
+                 Developed core business logic and RESTful APIs for a financial system. Implemented RBAC and factory design patterns for maintainability.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="inline-flex items-center px-2 py-1 rounded text-[10px] font-medium bg-emerald-50 text-emerald-700 border border-emerald-100"
+                  >Python</span
+                >
+                <span
+                  class="inline-flex items-center px-2 py-1 rounded text-[10px] font-medium bg-blue-50 text-blue-700 border border-blue-100"
+                  >Flask</span
+                >
+                <span
+                  class="inline-flex items-center px-2 py-1 rounded text-[10px] font-medium bg-zinc-100 text-zinc-600 border border-zinc-200"
+                  >Factory Pattern</span
+                >
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3: SmartChat AI -->
+          <article
+            class="group bg-white rounded-2xl border border-zinc-200 overflow-hidden hover:shadow-xl hover:shadow-zinc-200/50 hover:border-zinc-300 transition-all duration-300 fade-in-up delay-300 shimmer"
+          >
+            <div
+              class="h-48 bg-zinc-50 border-b border-zinc-100 relative overflow-hidden group-hover:bg-zinc-50/50 transition-colors"
+            >
+              <img
+                src="assets/images/smartchat.png"
+                alt="SmartChat AI Preview"
+                class="w-full h-full object-cover object-center opacity-90 group-hover:scale-110 transition-all duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent pointer-events-none"
+              ></div>
+              <div
+                class="absolute top-3 right-3 px-2 py-0.5 bg-purple-100/80 backdrop-blur-sm border border-purple-200/50 rounded-full"
+              >
+                <span
+                  class="text-[10px] font-semibold text-purple-700 tracking-tight uppercase"
+                  >AI / LLM</span
+                >
+              </div>
+            </div>
+            <div class="p-6">
+              <h3
+                class="font-semibold text-lg text-zinc-900 mb-2 group-hover:text-purple-600 transition-colors"
+              >
+                SmartChat AI
+              </h3>
+              <p
+                class="text-xs text-zinc-500 font-medium uppercase tracking-wide mb-3"
+              >
+                AI-Powered Chatbot
+              </p>
+              <p class="text-sm text-zinc-500 leading-relaxed mb-6">
+                Integrated LLaMA 3 (Ollama) with FastAPI for real-time streaming chat responses. Focused on efficient request handling and scalability.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="inline-flex items-center px-2 py-1 rounded text-[10px] font-medium bg-purple-50 text-purple-700 border border-purple-100"
+                  >FastAPI</span
+                >
+                <span
+                  class="inline-flex items-center px-2 py-1 rounded text-[10px] font-medium bg-zinc-900 text-white"
+                  >LLaMA 3</span
+                >
+                <span
+                  class="inline-flex items-center px-2 py-1 rounded text-[10px] font-medium bg-blue-50 text-blue-700 border border-blue-100"
+                  >Streaming</span
+                >
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="max-w-4xl mx-auto mb-20 fade-in-up">
+        <div
+          class="relative bg-gradient-to-b from-zinc-50 to-white border border-zinc-200 rounded-[2rem] p-8 md:p-12 text-center overflow-hidden"
+        >
+          <!-- Background decoration -->
+          <div
+            class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-emerald-500"
+          ></div>
+
+          <div
+            class="w-14 h-14 bg-white rounded-2xl border border-zinc-200 flex items-center justify-center mx-auto mb-6 shadow-sm group"
+          >
+            <iconify-icon
+              icon="solar:chat-round-line-linear"
+              class="text-zinc-900 group-hover:scale-125 transition-transform duration-300"
+              width="28"
+            ></iconify-icon>
+          </div>
+          <h2 class="text-3xl font-semibold tracking-tight text-zinc-900 mb-4">
+            Ready to start a project?
+          </h2>
+          <p class="text-zinc-500 mb-8 max-w-lg mx-auto leading-relaxed">
+            I'm currently available for backend engineering roles and freelance
+            opportunities. Let's build something scalable.
+          </p>
+
+          <div class="grid gap-4 max-w-md mx-auto relative z-10">
+            <a
+              href="mailto:yadavanilkumar8113@gmail.com"
+              class="flex items-center justify-center gap-3 px-6 py-4 bg-white border border-zinc-200 text-zinc-900 font-medium rounded-xl hover:border-zinc-400 hover:shadow-lg transition-all active:scale-[0.99] group"
+            >
+              <iconify-icon
+                icon="solar:letter-linear"
+                width="20"
+                class="group-hover:text-blue-600 transition-colors"
+              ></iconify-icon>
+              yadavanilkumar8113@gmail.com
+            </a>
+
+            <a
+              href="tel:+919817114961"
+              class="flex items-center justify-center gap-3 px-6 py-4 bg-white border border-zinc-200 text-zinc-900 font-medium rounded-xl hover:border-zinc-400 hover:shadow-lg transition-all active:scale-[0.99] group"
+            >
+              <iconify-icon
+                icon="solar:phone-linear"
+                width="20"
+                class="group-hover:text-emerald-600 transition-colors"
+              ></iconify-icon>
+              +91 9817114961
+            </a>
+
+            <div class="flex items-center justify-center gap-2 text-xs text-zinc-400 mb-2">
+              <iconify-icon icon="solar:map-point-linear" width="14"></iconify-icon>
+              Yamuna Nagar, Haryana
+            </div>
+
+            <div class="flex gap-4 justify-center">
+              <a
+                href="https://linkedin.com/in/ak-y-981-anilkumar/"
+                class="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-white border border-zinc-200 text-zinc-600 text-sm font-medium rounded-xl hover:text-blue-600 hover:border-blue-200 hover:shadow-md transition-all"
+              >
+                <iconify-icon
+                  icon="solar:link-linear"
+                  width="18"
+                ></iconify-icon>
+                LinkedIn
+              </a>
+              <a
+                href="https://github.com/anil-kumar981"
+                class="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-white border border-zinc-200 text-zinc-600 text-sm font-medium rounded-xl hover:text-black hover:border-zinc-400 hover:shadow-md transition-all"
+              >
+                <iconify-icon
+                  icon="solar:code-circle-linear"
+                  width="18"
+                ></iconify-icon>
+                GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer
+        class="max-w-6xl mx-auto pt-8 border-t border-zinc-200 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-zinc-400"
+      >
+        <p>&copy; 2025 Anil Kumar. All rights reserved.</p>
+        <div class="flex gap-6">
+          <a href="#" class="hover:text-zinc-600 transition-colors">Privacy</a>
+          <a href="#" class="hover:text-zinc-600 transition-colors">Terms</a>
+          <a href="#" class="hover:text-zinc-600 transition-colors">Twitter</a>
+        </div>
+      </footer>
+    </main>
+
+    <script>
+      // Enhanced Intersection Observer with smoother entry
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      document
+        .querySelectorAll(".fade-in-up")
+        .forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>
