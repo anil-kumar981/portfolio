@@ -1,10 +1,11 @@
-
 <!doctype html>
 <html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Anil Kumar - Python Developer</title>
+    <!-- FIX 1: Updated page title for SEO -->
+    <title>Anil Kumar — Python Backend Engineer | FastAPI · Django · PostgreSQL</title>
+    <meta name="description" content="Python Backend Engineer specializing in FastAPI, Django, PostgreSQL, Redis, Docker and scalable REST API systems. 1.5+ years of production backend experience." />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -50,7 +51,6 @@
       .accent-text { color: var(--accent-mint); }
       .text-dim { color: var(--text-dim); }
 
-      /* Components */
       .glass-card {
         background: var(--card-bg);
         border: 1px solid var(--border-color);
@@ -88,6 +88,29 @@
       }
 
       .btn-outline:hover { border-color: var(--accent-mint); color: var(--accent-mint); }
+
+      /* Resume download button */
+      .btn-resume {
+        border: 1px solid var(--accent-mint);
+        color: var(--accent-mint);
+        padding: 1rem 2rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        border-radius: 2px;
+        transition: all 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.7rem;
+        letter-spacing: 0.15em;
+      }
+
+      .btn-resume:hover {
+        background-color: var(--accent-mint);
+        color: var(--bg-black);
+        transform: translateY(-2px);
+        box-shadow: 0 0 20px rgba(0, 255, 157, 0.3);
+      }
 
       .tech-item {
         background: var(--card-bg);
@@ -132,7 +155,6 @@
         transform: translateY(-2px);
       }
 
-      /* Project Cards */
       .project-card {
         background: var(--card-bg);
         border: 1px solid var(--border-color);
@@ -150,6 +172,29 @@
         box-shadow: 0 10px 30px -10px rgba(0, 255, 157, 0.15);
       }
 
+      /* Featured project card — highlighted */
+      .project-card.featured {
+        border-color: rgba(0, 255, 157, 0.3);
+        background: linear-gradient(135deg, #111111 0%, #0d1a14 100%);
+      }
+
+      .project-card.featured:hover {
+        border-color: var(--accent-mint);
+        box-shadow: 0 10px 40px -10px rgba(0, 255, 157, 0.25);
+      }
+
+      .featured-badge {
+        font-family: monospace;
+        font-size: 0.55rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--bg-black);
+        background: var(--accent-mint);
+        padding: 0.2rem 0.6rem;
+        border-radius: 2px;
+        font-weight: 800;
+      }
+
       .project-image {
         height: 240px;
         background-size: cover;
@@ -164,7 +209,6 @@
         transform: scale(1.02);
       }
 
-      /* Ecosystem Animations */
       @keyframes orbit {
         from { transform: rotate(0deg); }
         to { transform: rotate(360deg); }
@@ -199,14 +243,8 @@
         100% { transform: translateX(-50%); }
       }
 
-      .animate-orbit {
-        animation: orbit 12s linear infinite;
-      }
-
-      .animate-float {
-        animation: float 6s ease-in-out infinite;
-      }
-
+      .animate-orbit { animation: orbit 12s linear infinite; }
+      .animate-float { animation: float 6s ease-in-out infinite; }
       .animate-float-delayed {
         animation: float 6s ease-in-out infinite;
         animation-delay: 3s;
@@ -224,11 +262,8 @@
         gap: 4rem;
       }
 
-      .marquee-content:hover {
-        animation-play-state: paused;
-      }
+      .marquee-content:hover { animation-play-state: paused; }
 
-      /* Ecosystem Data Flow */
       .flow-line {
         fill: none;
         stroke: var(--accent-mint);
@@ -269,9 +304,7 @@
         transition: height 0.5s ease;
       }
 
-      .category-node:hover::before {
-        height: 100%;
-      }
+      .category-node:hover::before { height: 100%; }
 
       .timeline-item {
         border-left: 2px solid var(--accent-mint);
@@ -289,11 +322,8 @@
         top: 0;
       }
 
-      section[id] {
-        scroll-margin-top: 100px;
-      }
+      section[id] { scroll-margin-top: 100px; }
 
-      /* Responsiveness */
       @media (max-width: 768px) {
         h1 { font-size: 3.5rem !important; }
         h2 { font-size: 3rem !important; }
@@ -301,7 +331,7 @@
         .text-7xl { font-size: 3.5rem !important; }
         .glass-card { padding: 1.5rem; }
         .section-num { font-size: 0.6rem; }
-        .btn-primary, .btn-outline { width: 100% !important; display: block !important; text-align: center; }
+        .btn-primary, .btn-outline, .btn-resume { width: 100% !important; display: block !important; text-align: center; justify-content: center; }
         .project-image { height: 180px; }
         .grid { gap: 2rem !important; }
       }
@@ -314,26 +344,30 @@
       }
     </style>
   </head>
-  <body class="antialiased selection:bg-mint selection:text-black">
+  <body class="antialiased">
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 z-50">
       <div class="max-w-6xl mx-auto px-6 h-full flex items-center justify-between">
         <a href="#" class="flex items-center gap-2 shrink-0">
-          <iconify-icon icon="solar:code-square-bold" class="text-accent-mint text-2xl"></iconify-icon>
+          <iconify-icon icon="solar:code-square-bold" class="text-accent-mint text-2xl" style="color: var(--accent-mint)"></iconify-icon>
           <span class="font-black text-xl tracking-tighter">PY_DEV</span>
         </a>
         
-        <!-- Center Links -->
         <div class="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
-          <a href="#about" class="text-[10px] font-bold uppercase tracking-widest text-text-dim hover:text-accent-mint transition-colors">About</a>
-          <a href="#expertise" class="text-[10px] font-bold uppercase tracking-widest text-text-dim hover:text-accent-mint transition-colors">Skills</a>
-          <a href="#experience" class="text-[10px] font-bold uppercase tracking-widest text-text-dim hover:text-accent-mint transition-colors">Experience</a>
-          <a href="#projects" class="text-[10px] font-bold uppercase tracking-widest text-text-dim hover:text-accent-mint transition-colors">Projects</a>
-          <a href="#contact" class="text-[10px] font-bold uppercase tracking-widest text-text-dim hover:text-accent-mint transition-colors">Contact</a>
+          <a href="#about" class="text-[10px] font-bold uppercase tracking-widest hover:text-white transition-colors" style="color: var(--text-dim)">About</a>
+          <a href="#expertise" class="text-[10px] font-bold uppercase tracking-widest hover:text-white transition-colors" style="color: var(--text-dim)">Skills</a>
+          <a href="#experience" class="text-[10px] font-bold uppercase tracking-widest hover:text-white transition-colors" style="color: var(--text-dim)">Experience</a>
+          <a href="#projects" class="text-[10px] font-bold uppercase tracking-widest hover:text-white transition-colors" style="color: var(--text-dim)">Projects</a>
+          <a href="#contact" class="text-[10px] font-bold uppercase tracking-widest hover:text-white transition-colors" style="color: var(--text-dim)">Contact</a>
         </div>
 
-        <div class="flex items-center">
-          <a href="#contact" class="px-5 py-2.5 bg-[#00FF9D] text-[#080808] text-[10px] font-black uppercase tracking-widest rounded hover:shadow-[0_0_20px_rgba(0,255,157,0.5)] transition-all">
+        <div class="flex items-center gap-3">
+          <!-- FIX 2: Resume download button in nav -->
+          <a href="https://drive.google.com/file/d/1qHvaqj4l4ZQeSL5QWSnSfrYlDWkmzCKY/view?usp=drive_link" target="_blank" class="hidden md:inline-flex items-center gap-2 px-4 py-2 border text-[9px] font-black uppercase tracking-widest rounded transition-all" style="border-color: var(--accent-mint); color: var(--accent-mint);" onmouseover="this.style.background='var(--accent-mint)';this.style.color='var(--bg-black)'" onmouseout="this.style.background='transparent';this.style.color='var(--accent-mint)'">
+            <iconify-icon icon="solar:file-download-bold" class="text-sm"></iconify-icon>
+            Resume
+          </a>
+          <a href="#contact" class="px-5 py-2.5 text-[10px] font-black uppercase tracking-widest rounded transition-all" style="background-color: var(--accent-mint); color: var(--bg-black);">
             Let's Collaborate
           </a>
         </div>
@@ -344,33 +378,37 @@
       <!-- Hero Section -->
       <section id="home" class="min-h-[70vh] flex flex-col justify-center py-4">
         <div class="fade-in-up">
-          <span class="text-[10px] font-bold tracking-[0.3em] text-accent-mint mb-8 block uppercase">Open to backend developer roles</span>
+          <span class="text-[10px] font-bold tracking-[0.3em] mb-8 block uppercase" style="color: var(--accent-mint)">Open to Python Backend Engineer roles</span>
           
           <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-            <!-- Left Column: Identity -->
             <div class="flex flex-col">
+              <!-- FIX 3: Updated hero title to Backend Engineer -->
               <h1 class="text-7xl md:text-9xl font-black leading-[0.8] mb-8">ANIL<br/>KUMAR</h1>
               <h2 class="text-xl md:text-2xl font-black tracking-[0.2em] uppercase text-white">
-                Python Backend Developer
+                Python Backend Engineer
               </h2>
             </div>
 
-            <!-- Right Column: Summary & Actions -->
             <div class="flex flex-col gap-10">
               <div class="space-y-6">
                 <p class="text-lg md:text-xl text-white font-medium leading-snug">
-                  Backend developer turning complex ideas into scalable, production-ready systems.
+                  Backend engineer turning complex requirements into scalable, production-ready API systems.
                 </p>
-                <p class="text-base md:text-lg text-text-dim leading-relaxed">
-                  Experienced in backend architecture, secure APIs, authentication, and distributed services.
+                <p class="text-base md:text-lg leading-relaxed" style="color: var(--text-dim)">
+                  Specialized in async architectures, distributed backend services, secure authentication, and database optimization.
                 </p>
-                <p class="text-base md:text-lg text-text-dim leading-relaxed">
-                  Focused on building reliable software that performs beyond development environments.
+                <p class="text-base md:text-lg leading-relaxed" style="color: var(--text-dim)">
+                  Focused on building reliable software that performs under real production conditions.
                 </p>
               </div>
               <div class="flex flex-wrap gap-4">
                 <a href="#projects" class="btn-primary !px-10">View Projects</a>
                 <a href="#contact" class="btn-outline !px-10">Get In Touch</a>
+                <!-- FIX 4: Resume download button in hero -->
+                <a href="https://drive.google.com/file/d/1qHvaqj4l4ZQeSL5QWSnSfrYlDWkmzCKY/view?usp=drive_link" target="_blank" class="btn-resume !px-10">
+                  <iconify-icon icon="solar:file-download-bold"></iconify-icon>
+                  Download Resume
+                </a>
               </div>
             </div>
           </div>
@@ -383,47 +421,48 @@
         <div class="glass-card">
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <div>
-              <p class="text-lg md:text-xl text-text-dim leading-relaxed mb-12">
-                Backend Engineer focused on building <span class="text-white font-medium">scalable APIs</span>, secure authentication systems, and production-ready backend services using <span class="text-white font-medium">Python, FastAPI, Flask, and Django</span>. 
-                Experienced in async architectures, PostgreSQL optimization, SOLID principles, Dockerized deployments, CI/CD workflows, and backend systems designed for reliability, maintainability, and real-world performance.
+              <p class="text-lg md:text-xl leading-relaxed mb-12" style="color: var(--text-dim)">
+                <!-- FIX 5: Summary updated to match resume -->
+                Python Backend Engineer with <span class="text-white font-medium">1.5+ years</span> of experience building production-grade RESTful APIs and distributed backend systems using <span class="text-white font-medium">FastAPI, Django, and Flask</span>.
+                Proficient in <span class="text-white font-medium">async programming, PostgreSQL query optimization, Celery-based background processing, Redis caching, JWT/RBAC security, and Docker containerization</span>. Applies SOLID principles, clean architecture, and design patterns to deliver maintainable, scalable services.
               </p>
               
               <div class="space-y-10">
                 <div>
-                  <span class="text-[10px] font-bold text-text-dim uppercase tracking-[0.3em] mb-3 block">Experience</span>
+                  <span class="text-[10px] font-bold uppercase tracking-[0.3em] mb-3 block" style="color: var(--text-dim)">Experience</span>
                   <h3 class="text-2xl md:text-3xl font-black uppercase leading-tight">
                     Building Backend Systems<br/>
-                    <span class="accent-text">For 1.5+ Years</span>
+                    <span style="color: var(--accent-mint)">For 1.5+ Years</span>
                   </h3>
                 </div>
                 <div>
-                  <span class="text-[10px] font-bold text-text-dim uppercase tracking-[0.3em] mb-3 block">Current Role</span>
+                  <span class="text-[10px] font-bold uppercase tracking-[0.3em] mb-3 block" style="color: var(--text-dim)">Current Role</span>
                   <h3 class="text-2xl md:text-3xl font-black uppercase leading-tight">
-                    Software Developer<br/>
-                    <span class="accent-text">DCT Technology Pvt. Ltd.</span>
+                    Python Backend Engineer<br/>
+                    <span style="color: var(--accent-mint)">DCT Technology Pvt. Ltd.</span>
                   </h3>
                 </div>
               </div>
             </div>
 
-            <div class="bg-black/20 p-8 md:p-10 border border-border-color rounded-sm">
-              <h4 class="text-xs font-bold tracking-[0.2em] accent-text uppercase mb-8">Core Philosophy</h4>
+            <div class="p-8 md:p-10 border rounded-sm" style="background: rgba(0,0,0,0.2); border-color: var(--border-color)">
+              <h4 class="text-xs font-bold tracking-[0.2em] uppercase mb-8" style="color: var(--accent-mint)">Core Philosophy</h4>
               <ul class="space-y-6">
                 <li class="flex gap-5 items-start">
-                  <iconify-icon icon="solar:check-circle-bold" class="text-accent-mint text-xl shrink-0"></iconify-icon>
-                  <p class="text-base text-text-dim leading-snug">Engineering <span class="text-white font-medium">practical systems</span> over trendy abstractions.</p>
+                  <iconify-icon icon="solar:check-circle-bold" class="text-xl shrink-0" style="color: var(--accent-mint)"></iconify-icon>
+                  <p class="text-base leading-snug" style="color: var(--text-dim)">Engineering <span class="text-white font-medium">practical systems</span> over trendy abstractions.</p>
                 </li>
                 <li class="flex gap-5 items-start">
-                  <iconify-icon icon="solar:check-circle-bold" class="text-accent-mint text-xl shrink-0"></iconify-icon>
-                  <p class="text-base text-text-dim leading-snug">Building backend services that remain <span class="text-white font-medium">maintainable at scale</span>.</p>
+                  <iconify-icon icon="solar:check-circle-bold" class="text-xl shrink-0" style="color: var(--accent-mint)"></iconify-icon>
+                  <p class="text-base leading-snug" style="color: var(--text-dim)">Building backend services that remain <span class="text-white font-medium">maintainable at scale</span>.</p>
                 </li>
                 <li class="flex gap-5 items-start">
-                  <iconify-icon icon="solar:check-circle-bold" class="text-accent-mint text-xl shrink-0"></iconify-icon>
-                  <p class="text-base text-text-dim leading-snug">Prioritizing <span class="text-white font-medium">performance, reliability</span>, and clean architecture.</p>
+                  <iconify-icon icon="solar:check-circle-bold" class="text-xl shrink-0" style="color: var(--accent-mint)"></iconify-icon>
+                  <p class="text-base leading-snug" style="color: var(--text-dim)">Prioritizing <span class="text-white font-medium">performance, reliability</span>, and clean architecture over quick fixes.</p>
                 </li>
                 <li class="flex gap-5 items-start">
-                  <iconify-icon icon="solar:check-circle-bold" class="text-accent-mint text-xl shrink-0"></iconify-icon>
-                  <p class="text-base text-text-dim leading-snug">Writing <span class="text-white font-medium">production-focused code</span> with long-term stability in mind.</p>
+                  <iconify-icon icon="solar:check-circle-bold" class="text-xl shrink-0" style="color: var(--accent-mint)"></iconify-icon>
+                  <p class="text-base leading-snug" style="color: var(--text-dim)">Writing <span class="text-white font-medium">production-focused code</span> designed to survive beyond the development environment.</p>
                 </li>
               </ul>
             </div>
@@ -436,19 +475,15 @@
         <span class="section-num">02 // TECHNICAL ECOSYSTEM</span>
         
         <div class="relative py-8 px-4">
-          <!-- Background SVG Flow Lines (Desktop Only) -->
           <svg class="hidden md:block absolute inset-0 w-full h-full pointer-events-none z-0" viewBox="0 0 1200 800">
             <defs>
               <marker id="dot" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4">
                 <circle cx="5" cy="5" r="3" fill="#00FF9D" />
               </marker>
             </defs>
-            <!-- Left Side Flows (Source: Precision center 600,240 -> Target: ~350,y) -->
             <path d="M600,240 C500,240 450,80 350,80" class="flow-line" marker-end="url(#dot)" style="stroke-opacity: 0.2;" />
             <path d="M600,240 L350,240" class="flow-line" marker-end="url(#dot)" style="stroke-opacity: 0.2;" />
             <path d="M600,240 C500,240 450,420 350,420" class="flow-line" marker-end="url(#dot)" style="stroke-opacity: 0.2;" />
-            
-            <!-- Right Side Flows (Source: Precision center 600,240 -> Target: ~850,y) -->
             <path d="M600,240 C700,240 750,80 850,80" class="flow-line" marker-end="url(#dot)" style="stroke-opacity: 0.2;" />
             <path d="M600,240 L850,240" class="flow-line" marker-end="url(#dot)" style="stroke-opacity: 0.2;" />
             <path d="M600,240 C700,240 750,420 850,420" class="flow-line" marker-end="url(#dot)" style="stroke-opacity: 0.2;" />
@@ -456,40 +491,42 @@
 
           <div class="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-16 lg:gap-32 items-center">
             
-            <!-- Left Side Categories -->
+            <!-- Left Side -->
             <div class="space-y-12 order-2 md:order-1">
               <div class="category-node animate-float">
-                <h4 class="text-[10px] font-bold tracking-[0.2em] accent-text uppercase mb-4">Development Stack</h4>
+                <!-- FIX 6: Removed TypeScript and JavaScript from Development Stack -->
+                <h4 class="text-[10px] font-bold tracking-[0.2em] uppercase mb-4" style="color: var(--accent-mint)">Development Stack</h4>
                 <div class="flex flex-wrap gap-2">
                   <span class="tag">Python</span>
                   <span class="tag">FastAPI</span>
                   <span class="tag">Flask</span>
                   <span class="tag">Django</span>
-                  <span class="tag">Jinja2</span>
-                  <span class="tag">TypeScript</span>
-                  <span class="tag">JavaScript</span>
+                  <span class="tag">DRF</span>
+                  <span class="tag">Pydantic</span>
                   <span class="tag">Telegram Bot</span>
                 </div>
               </div>
               
               <div class="category-node animate-float-delayed">
-                <h4 class="text-[10px] font-bold tracking-[0.2em] accent-text uppercase mb-4">Architecture & APIs</h4>
+                <h4 class="text-[10px] font-bold tracking-[0.2em] uppercase mb-4" style="color: var(--accent-mint)">Architecture & APIs</h4>
                 <div class="flex flex-wrap gap-2">
                   <span class="tag">REST APIs</span>
                   <span class="tag">JWT Auth</span>
+                  <span class="tag">RBAC</span>
                   <span class="tag">SOLID</span>
                   <span class="tag">DI</span>
                   <span class="tag">OpenAPI</span>
+                  <span class="tag">Swagger</span>
                 </div>
               </div>
 
               <div class="category-node animate-float">
-                <h4 class="text-[10px] font-bold tracking-[0.2em] accent-text uppercase mb-4">AI Integration</h4>
+                <h4 class="text-[10px] font-bold tracking-[0.2em] uppercase mb-4" style="color: var(--accent-mint)">AI Integration</h4>
                 <div class="flex flex-wrap gap-2">
                   <span class="tag">Ollama</span>
                   <span class="tag">LLaMA 3</span>
+                  <span class="tag">LangChain</span>
                   <span class="tag">Gemini</span>
-                  <span class="tag">Flash Models</span>
                   <span class="tag">OCR</span>
                 </div>
               </div>
@@ -498,50 +535,46 @@
             <!-- Central Hub -->
             <div class="flex justify-center order-1 md:order-2">
               <div class="relative hub-circle group cursor-crosshair">
-                <!-- Outer Glow -->
-                <div class="absolute inset-[-40px] bg-accent-mint/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
-                
-                <div class="relative w-48 h-48 rounded-full border border-border-color bg-card-bg flex flex-col items-center justify-center text-center p-6 shadow-2xl z-20">
-                  <iconify-icon icon="solar:cpu-bold" class="text-4xl accent-text mb-3"></iconify-icon>
+                <div class="absolute inset-[-40px] rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000" style="background: rgba(0,255,157,0.05)"></div>
+                <div class="relative w-48 h-48 rounded-full border flex flex-col items-center justify-center text-center p-6 shadow-2xl z-20" style="border-color: var(--border-color); background: var(--card-bg)">
+                  <iconify-icon icon="solar:cpu-bold" class="text-4xl mb-3" style="color: var(--accent-mint)"></iconify-icon>
                   <span class="text-[10px] font-black uppercase tracking-widest text-white">Core<br/>Expertise</span>
-                  
-                  <!-- Orbiting dot container -->
                   <div class="absolute inset-0 animate-orbit pointer-events-none">
-                    <div class="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-accent-mint rounded-full shadow-[0_0_15px_#00FF9D]"></div>
+                    <div class="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full" style="background: var(--accent-mint); box-shadow: 0 0 15px #00FF9D"></div>
                   </div>
                 </div>
-
-                <!-- Animated Background Pulse -->
-                <div class="absolute inset-0 rounded-full border border-accent-mint/20 animate-ping opacity-20 group-hover:opacity-40 transition-opacity"></div>
+                <div class="absolute inset-0 rounded-full border animate-ping opacity-20 group-hover:opacity-40 transition-opacity" style="border-color: rgba(0,255,157,0.2)"></div>
               </div>
             </div>
 
-            <!-- Right Side Categories -->
+            <!-- Right Side -->
             <div class="space-y-12 order-3 md:text-right">
               <div class="category-node animate-float-delayed">
-                <h4 class="text-[10px] font-bold tracking-[0.2em] accent-text uppercase mb-4">Database & Caching</h4>
+                <h4 class="text-[10px] font-bold tracking-[0.2em] uppercase mb-4" style="color: var(--accent-mint)">Database & Caching</h4>
                 <div class="flex flex-wrap md:justify-end gap-2">
                   <span class="tag">PostgreSQL</span>
                   <span class="tag">SQLAlchemy</span>
                   <span class="tag">Redis</span>
-                  <span class="tag">Mongoose</span>
+                  <span class="tag">MongoDB</span>
                   <span class="tag">SQLite</span>
                 </div>
               </div>
 
               <div class="category-node animate-float">
-                <h4 class="text-[10px] font-bold tracking-[0.2em] accent-text uppercase mb-4">Async & Background</h4>
+                <h4 class="text-[10px] font-bold tracking-[0.2em] uppercase mb-4" style="color: var(--accent-mint)">Async & Background</h4>
                 <div class="flex flex-wrap md:justify-end gap-2">
                   <span class="tag">Celery</span>
                   <span class="tag">async/await</span>
                   <span class="tag">AsyncIO</span>
+                  <span class="tag">Pytest</span>
                 </div>
               </div>
 
               <div class="category-node animate-float-delayed">
-                <h4 class="text-[10px] font-bold tracking-[0.2em] accent-text uppercase mb-4">DevOps & Deploy</h4>
+                <h4 class="text-[10px] font-bold tracking-[0.2em] uppercase mb-4" style="color: var(--accent-mint)">DevOps & Deploy</h4>
                 <div class="flex flex-wrap md:justify-end gap-2">
                   <span class="tag">Docker</span>
+                  <span class="tag">Docker Compose</span>
                   <span class="tag">CI/CD</span>
                   <span class="tag">GitHub Actions</span>
                   <span class="tag">Render</span>
@@ -550,63 +583,55 @@
             </div>
           </div>
 
-          <!-- Tools Inventory Marquee -->
-          <div class="mt-32 pt-12 border-t border-border-color/50 relative z-10">
-            <span class="text-[8px] font-bold text-text-dim uppercase tracking-[0.5em] mb-10 block text-center">Tools Inventory</span>
+          <!-- Tools Marquee -->
+          <div class="mt-32 pt-12 border-t relative z-10" style="border-color: rgba(34,34,34,0.5)">
+            <span class="text-[8px] font-bold uppercase tracking-[0.5em] mb-10 block text-center" style="color: var(--text-dim)">Tools Inventory</span>
             <div class="marquee-container">
               <div class="marquee-content">
-                <!-- Set 1 -->
-                <iconify-icon icon="simple-icons:visualstudiocode" class="text-2xl text-text-dim hover:text-white transition-colors"></iconify-icon>
-                <iconify-icon icon="simple-icons:git" class="text-2xl text-text-dim hover:text-white transition-colors"></iconify-icon>
-                <iconify-icon icon="simple-icons:github" class="text-2xl text-text-dim hover:text-white transition-colors"></iconify-icon>
-                <iconify-icon icon="simple-icons:jira" class="text-2xl text-text-dim hover:text-white transition-colors"></iconify-icon>
-                <iconify-icon icon="simple-icons:gitlab" class="text-2xl text-text-dim hover:text-white transition-colors"></iconify-icon>
-                <iconify-icon icon="simple-icons:mongodb" class="text-2xl text-text-dim hover:text-white transition-colors"></iconify-icon>
-                <iconify-icon icon="simple-icons:postgresql" class="text-2xl text-text-dim hover:text-white transition-colors"></iconify-icon>
-                <iconify-icon icon="simple-icons:cursor" class="text-2xl text-text-dim hover:text-white transition-colors"></iconify-icon>
-                <iconify-icon icon="simple-icons:anthropic" class="text-2xl text-text-dim hover:text-white transition-colors"></iconify-icon>
-                <iconify-icon icon="simple-icons:googlegemini" class="text-2xl text-text-dim hover:text-white transition-colors"></iconify-icon>
-                <iconify-icon icon="simple-icons:docker" class="text-2xl text-text-dim hover:text-white transition-colors"></iconify-icon>
-                <iconify-icon icon="simple-icons:icloud" class="text-2xl text-text-dim hover:text-white transition-colors"></iconify-icon>
-                <iconify-icon icon="simple-icons:python" class="text-2xl text-text-dim hover:text-white transition-colors"></iconify-icon>
-                <iconify-icon icon="simple-icons:flask" class="text-2xl text-text-dim hover:text-white transition-colors"></iconify-icon>
-                <iconify-icon icon="simple-icons:django" class="text-2xl text-text-dim hover:text-white transition-colors"></iconify-icon>
-                <iconify-icon icon="simple-icons:fastapi" class="text-2xl text-text-dim hover:text-white transition-colors"></iconify-icon>
-                <iconify-icon icon="simple-icons:postman" class="text-2xl text-text-dim hover:text-white transition-colors"></iconify-icon>
-                <iconify-icon icon="simple-icons:sqlite" class="text-2xl text-text-dim hover:text-white transition-colors"></iconify-icon>
-                <iconify-icon icon="simple-icons:javascript" class="text-2xl text-text-dim hover:text-white transition-colors"></iconify-icon>
-                <iconify-icon icon="simple-icons:typescript" class="text-2xl text-text-dim hover:text-white transition-colors"></iconify-icon>
-                <iconify-icon icon="simple-icons:jinja" class="text-2xl text-text-dim hover:text-white transition-colors"></iconify-icon>
-                
-                <!-- Duplicate for Loop -->
-                <iconify-icon icon="simple-icons:visualstudiocode" class="text-2xl text-text-dim hover:text-white transition-colors"></iconify-icon>
-                <iconify-icon icon="simple-icons:git" class="text-2xl text-text-dim hover:text-white transition-colors"></iconify-icon>
-                <iconify-icon icon="simple-icons:github" class="text-2xl text-text-dim hover:text-white transition-colors"></iconify-icon>
-                <iconify-icon icon="simple-icons:jira" class="text-2xl text-text-dim hover:text-white transition-colors"></iconify-icon>
-                <iconify-icon icon="simple-icons:gitlab" class="text-2xl text-text-dim hover:text-white transition-colors"></iconify-icon>
-                <iconify-icon icon="simple-icons:mongodb" class="text-2xl text-text-dim hover:text-white transition-colors"></iconify-icon>
-                <iconify-icon icon="simple-icons:postgresql" class="text-2xl text-text-dim hover:text-white transition-colors"></iconify-icon>
-                <iconify-icon icon="simple-icons:cursor" class="text-2xl text-text-dim hover:text-white transition-colors"></iconify-icon>
-                <iconify-icon icon="simple-icons:anthropic" class="text-2xl text-text-dim hover:text-white transition-colors"></iconify-icon>
-                <iconify-icon icon="simple-icons:googlegemini" class="text-2xl text-text-dim hover:text-white transition-colors"></iconify-icon>
-                <iconify-icon icon="simple-icons:docker" class="text-2xl text-text-dim hover:text-white transition-colors"></iconify-icon>
-                <iconify-icon icon="simple-icons:icloud" class="text-2xl text-text-dim hover:text-white transition-colors"></iconify-icon>
-                <iconify-icon icon="simple-icons:python" class="text-2xl text-text-dim hover:text-white transition-colors"></iconify-icon>
-                <iconify-icon icon="simple-icons:flask" class="text-2xl text-text-dim hover:text-white transition-colors"></iconify-icon>
-                <iconify-icon icon="simple-icons:django" class="text-2xl text-text-dim hover:text-white transition-colors"></iconify-icon>
-                <iconify-icon icon="simple-icons:fastapi" class="text-2xl text-text-dim hover:text-white transition-colors"></iconify-icon>
-                <iconify-icon icon="simple-icons:postman" class="text-2xl text-text-dim hover:text-white transition-colors"></iconify-icon>
-                <iconify-icon icon="simple-icons:sqlite" class="text-2xl text-text-dim hover:text-white transition-colors"></iconify-icon>
-                <iconify-icon icon="simple-icons:javascript" class="text-2xl text-text-dim hover:text-white transition-colors"></iconify-icon>
-                <iconify-icon icon="simple-icons:typescript" class="text-2xl text-text-dim hover:text-white transition-colors"></iconify-icon>
-                <iconify-icon icon="simple-icons:jinja" class="text-2xl text-text-dim hover:text-white transition-colors"></iconify-icon>
+                <iconify-icon icon="simple-icons:visualstudiocode" class="text-2xl transition-colors" style="color: var(--text-dim)"></iconify-icon>
+                <iconify-icon icon="simple-icons:git" class="text-2xl transition-colors" style="color: var(--text-dim)"></iconify-icon>
+                <iconify-icon icon="simple-icons:github" class="text-2xl transition-colors" style="color: var(--text-dim)"></iconify-icon>
+                <iconify-icon icon="simple-icons:jira" class="text-2xl transition-colors" style="color: var(--text-dim)"></iconify-icon>
+                <iconify-icon icon="simple-icons:gitlab" class="text-2xl transition-colors" style="color: var(--text-dim)"></iconify-icon>
+                <iconify-icon icon="simple-icons:mongodb" class="text-2xl transition-colors" style="color: var(--text-dim)"></iconify-icon>
+                <iconify-icon icon="simple-icons:postgresql" class="text-2xl transition-colors" style="color: var(--text-dim)"></iconify-icon>
+                <iconify-icon icon="simple-icons:anthropic" class="text-2xl transition-colors" style="color: var(--text-dim)"></iconify-icon>
+                <iconify-icon icon="simple-icons:googlegemini" class="text-2xl transition-colors" style="color: var(--text-dim)"></iconify-icon>
+                <iconify-icon icon="simple-icons:docker" class="text-2xl transition-colors" style="color: var(--text-dim)"></iconify-icon>
+                <iconify-icon icon="simple-icons:python" class="text-2xl transition-colors" style="color: var(--text-dim)"></iconify-icon>
+                <iconify-icon icon="simple-icons:flask" class="text-2xl transition-colors" style="color: var(--text-dim)"></iconify-icon>
+                <iconify-icon icon="simple-icons:django" class="text-2xl transition-colors" style="color: var(--text-dim)"></iconify-icon>
+                <iconify-icon icon="simple-icons:fastapi" class="text-2xl transition-colors" style="color: var(--text-dim)"></iconify-icon>
+                <iconify-icon icon="simple-icons:postman" class="text-2xl transition-colors" style="color: var(--text-dim)"></iconify-icon>
+                <iconify-icon icon="simple-icons:sqlite" class="text-2xl transition-colors" style="color: var(--text-dim)"></iconify-icon>
+                <iconify-icon icon="simple-icons:redis" class="text-2xl transition-colors" style="color: var(--text-dim)"></iconify-icon>
+                <iconify-icon icon="simple-icons:celery" class="text-2xl transition-colors" style="color: var(--text-dim)"></iconify-icon>
+                <iconify-icon icon="simple-icons:cursor" class="text-2xl transition-colors" style="color: var(--text-dim)"></iconify-icon>
+                <!-- Duplicate for loop -->
+                <iconify-icon icon="simple-icons:visualstudiocode" class="text-2xl transition-colors" style="color: var(--text-dim)"></iconify-icon>
+                <iconify-icon icon="simple-icons:git" class="text-2xl transition-colors" style="color: var(--text-dim)"></iconify-icon>
+                <iconify-icon icon="simple-icons:github" class="text-2xl transition-colors" style="color: var(--text-dim)"></iconify-icon>
+                <iconify-icon icon="simple-icons:jira" class="text-2xl transition-colors" style="color: var(--text-dim)"></iconify-icon>
+                <iconify-icon icon="simple-icons:gitlab" class="text-2xl transition-colors" style="color: var(--text-dim)"></iconify-icon>
+                <iconify-icon icon="simple-icons:mongodb" class="text-2xl transition-colors" style="color: var(--text-dim)"></iconify-icon>
+                <iconify-icon icon="simple-icons:postgresql" class="text-2xl transition-colors" style="color: var(--text-dim)"></iconify-icon>
+                <iconify-icon icon="simple-icons:anthropic" class="text-2xl transition-colors" style="color: var(--text-dim)"></iconify-icon>
+                <iconify-icon icon="simple-icons:googlegemini" class="text-2xl transition-colors" style="color: var(--text-dim)"></iconify-icon>
+                <iconify-icon icon="simple-icons:docker" class="text-2xl transition-colors" style="color: var(--text-dim)"></iconify-icon>
+                <iconify-icon icon="simple-icons:python" class="text-2xl transition-colors" style="color: var(--text-dim)"></iconify-icon>
+                <iconify-icon icon="simple-icons:flask" class="text-2xl transition-colors" style="color: var(--text-dim)"></iconify-icon>
+                <iconify-icon icon="simple-icons:django" class="text-2xl transition-colors" style="color: var(--text-dim)"></iconify-icon>
+                <iconify-icon icon="simple-icons:fastapi" class="text-2xl transition-colors" style="color: var(--text-dim)"></iconify-icon>
+                <iconify-icon icon="simple-icons:postman" class="text-2xl transition-colors" style="color: var(--text-dim)"></iconify-icon>
+                <iconify-icon icon="simple-icons:sqlite" class="text-2xl transition-colors" style="color: var(--text-dim)"></iconify-icon>
+                <iconify-icon icon="simple-icons:redis" class="text-2xl transition-colors" style="color: var(--text-dim)"></iconify-icon>
+                <iconify-icon icon="simple-icons:celery" class="text-2xl transition-colors" style="color: var(--text-dim)"></iconify-icon>
+                <iconify-icon icon="simple-icons:cursor" class="text-2xl transition-colors" style="color: var(--text-dim)"></iconify-icon>
               </div>
             </div>
           </div>
         </div>
       </section>
-
-
 
       <!-- Professional History -->
       <section id="experience" class="fade-in-up">
@@ -616,46 +641,48 @@
           <div class="flex flex-col md:flex-row justify-between items-start mb-6">
             <div>
               <h3 class="text-2xl font-black">DCT Technology</h3>
-              <p class="text-accent-mint font-bold text-sm tracking-widest">Software Developer</p>
+              <!-- FIX 7: Updated job title to match resume -->
+              <p class="font-bold text-sm tracking-widest" style="color: var(--accent-mint)">Python Backend Engineer</p>
             </div>
-            <span class="text-[10px] font-bold text-text-dim uppercase tracking-widest mt-2">Feb 2025 — Present</span>
+            <span class="text-[10px] font-bold uppercase tracking-widest mt-2" style="color: var(--text-dim)">Feb 2025 — Present</span>
           </div>
           <div class="glass-card !p-8">
-            <p class="text-text-dim mb-6">
-              Leading the development of scalable backend services and API-driven applications using Python, FastAPI, Flask and Django with SQL and PostgreSQL databases. Contributed to building scalable backend services, authentication systems, database operations, and business workflow automation.
+            <!-- FIX 8: Removed NestJS reference, updated description to match resume -->
+            <p class="mb-6" style="color: var(--text-dim)">
+              Building and maintaining production-grade RESTful APIs and backend services using FastAPI and Flask, serving internal enterprise systems and client-facing applications. Applying clean architecture, SOLID principles, and dependency injection across all services.
             </p>
             <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
               <li class="flex gap-4 items-start">
-                <iconify-icon icon="solar:check-circle-bold" class="text-accent-mint mt-1 shrink-0"></iconify-icon>
-                <p class="text-sm text-text-dim">Developed RESTful APIs using FastAPI, Flask and Django for business applications.</p>
+                <iconify-icon icon="solar:check-circle-bold" class="mt-1 shrink-0" style="color: var(--accent-mint)"></iconify-icon>
+                <p class="text-sm" style="color: var(--text-dim)">Built production REST APIs with <span class="text-white">FastAPI and Flask</span>, enforcing clean architecture with modular service layers and dependency injection.</p>
               </li>
               <li class="flex gap-4 items-start">
-                <iconify-icon icon="solar:check-circle-bold" class="text-accent-mint mt-1 shrink-0"></iconify-icon>
-                <p class="text-sm text-text-dim">Implemented JWT authentication and role-based access control for secure API access.</p>
+                <iconify-icon icon="solar:check-circle-bold" class="mt-1 shrink-0" style="color: var(--accent-mint)"></iconify-icon>
+                <p class="text-sm" style="color: var(--text-dim)">Engineered <span class="text-white">multi-role RBAC with JWT authentication</span>, applying role hierarchy guards to enforce least-privilege access control across all endpoints.</p>
               </li>
               <li class="flex gap-4 items-start">
-                <iconify-icon icon="solar:check-circle-bold" class="text-accent-mint mt-1 shrink-0"></iconify-icon>
-                <p class="text-sm text-text-dim">Designed and managed relational database structures with optimized query handling.</p>
+                <iconify-icon icon="solar:check-circle-bold" class="mt-1 shrink-0" style="color: var(--accent-mint)"></iconify-icon>
+                <p class="text-sm" style="color: var(--text-dim)">Optimized <span class="text-white">PostgreSQL schemas</span> through strategic indexing, normalized relational modeling, and efficient query design for high-throughput operations.</p>
               </li>
               <li class="flex gap-4 items-start">
-                <iconify-icon icon="solar:check-circle-bold" class="text-accent-mint mt-1 shrink-0"></iconify-icon>
-                <p class="text-sm text-text-dim">Built reusable CRUD modules with validation, modular architecture, and clean code practices.</p>
+                <iconify-icon icon="solar:check-circle-bold" class="mt-1 shrink-0" style="color: var(--accent-mint)"></iconify-icon>
+                <p class="text-sm" style="color: var(--text-dim)">Containerized services with <span class="text-white">Docker and Docker Compose</span>; established CI/CD pipelines via GitHub Actions for environment-specific deployments.</p>
               </li>
               <li class="flex gap-4 items-start">
-                <iconify-icon icon="solar:check-circle-bold" class="text-accent-mint mt-1 shrink-0"></iconify-icon>
-                <p class="text-sm text-text-dim">Worked with asynchronous request handling and API integration workflows.</p>
+                <iconify-icon icon="solar:check-circle-bold" class="mt-1 shrink-0" style="color: var(--accent-mint)"></iconify-icon>
+                <p class="text-sm" style="color: var(--text-dim)">Defined <span class="text-white">Pydantic schemas</span> for all request/response models with auto-generated Swagger/OpenAPI documentation across all FastAPI endpoints.</p>
               </li>
               <li class="flex gap-4 items-start">
-                <iconify-icon icon="solar:check-circle-bold" class="text-accent-mint mt-1 shrink-0"></iconify-icon>
-                <p class="text-sm text-text-dim">Integrated SQLite and PostgreSQL databases for data-driven applications.</p>
+                <iconify-icon icon="solar:check-circle-bold" class="mt-1 shrink-0" style="color: var(--accent-mint)"></iconify-icon>
+                <p class="text-sm" style="color: var(--text-dim)">Partnered with frontend teams to define <span class="text-white">API contracts and versioning standards</span>, cutting integration turnaround and reducing post-deployment defects.</p>
               </li>
               <li class="flex gap-4 items-start">
-                <iconify-icon icon="solar:check-circle-bold" class="text-accent-mint mt-1 shrink-0"></iconify-icon>
-                <p class="text-sm text-text-dim">Participated in debugging, API testing, and backend issue resolution across projects.</p>
+                <iconify-icon icon="solar:check-circle-bold" class="mt-1 shrink-0" style="color: var(--accent-mint)"></iconify-icon>
+                <p class="text-sm" style="color: var(--text-dim)">Implemented <span class="text-white">Celery + Redis</span> async task pipelines for background job processing, decoupling long-running operations from the HTTP request cycle.</p>
               </li>
               <li class="flex gap-4 items-start">
-                <iconify-icon icon="solar:check-circle-bold" class="text-accent-mint mt-1 shrink-0"></iconify-icon>
-                <p class="text-sm text-text-dim">Collaborated on performance improvements and backend feature development.</p>
+                <iconify-icon icon="solar:check-circle-bold" class="mt-1 shrink-0" style="color: var(--accent-mint)"></iconify-icon>
+                <p class="text-sm" style="color: var(--text-dim)">Conducted <span class="text-white">API testing and debugging</span> using Pytest and Postman, resolving backend issues and maintaining production system stability.</p>
               </li>
             </ul>
           </div>
@@ -665,181 +692,271 @@
       <!-- Selected Projects -->
       <section id="projects" class="fade-in-up">
         <span class="section-num">04 // SELECTED PROJECTS</span>
+
+        <!-- FIX 9: AI RFP Bot featured at the top as a full-width card -->
+        <div class="mb-8">
+          <article class="project-card featured">
+            <div class="p-8 md:p-10">
+              <div class="flex flex-col md:flex-row md:items-start justify-between gap-6 mb-6">
+                <div class="flex items-start gap-4">
+                  <iconify-icon icon="solar:magic-stick-3-bold" class="text-3xl mt-1 shrink-0" style="color: var(--accent-mint)"></iconify-icon>
+                  <div>
+                    <div class="flex items-center gap-3 mb-2">
+                      <h4 class="text-2xl font-black">AI RFP Assistant Bot</h4>
+                      <span class="featured-badge">⭐ Featured</span>
+                    </div>
+                    <p class="text-sm font-bold tracking-widest" style="color: var(--accent-mint)">Automated RFP Review · 80% Time Reduction</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-[10px] font-bold uppercase tracking-widest" style="color: rgba(160,160,160,0.6)">Private Project</span>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
+                <div>
+                  <p class="text-base leading-relaxed mb-4" style="color: var(--text-dim)">
+                    Automated the manual RFP (Request for Proposal) document review process, reducing processing time by <span class="text-white font-bold">80%</span>. Built a Telegram bot that extracts critical metadata from RFP documents using OCR and Gemini AI, then generates structured proposal drafts automatically.
+                  </p>
+                  <p class="text-sm leading-relaxed" style="color: var(--text-dim)">
+                    Reduced a <span class="text-white">4-hour manual review process to under 30 minutes</span> per document, enabling faster business proposal turnaround and reducing human error in metadata extraction.
+                  </p>
+                </div>
+                <div class="space-y-3">
+                  <h5 class="text-[10px] font-bold uppercase tracking-widest mb-3" style="color: var(--text-dim)">Key Outcomes</h5>
+                  <div class="flex items-start gap-3">
+                    <iconify-icon icon="solar:check-circle-bold" class="shrink-0 mt-0.5" style="color: var(--accent-mint)"></iconify-icon>
+                    <p class="text-sm" style="color: var(--text-dim)">80% reduction in document review time</p>
+                  </div>
+                  <div class="flex items-start gap-3">
+                    <iconify-icon icon="solar:check-circle-bold" class="shrink-0 mt-0.5" style="color: var(--accent-mint)"></iconify-icon>
+                    <p class="text-sm" style="color: var(--text-dim)">Automated metadata extraction via OCR pipeline</p>
+                  </div>
+                  <div class="flex items-start gap-3">
+                    <iconify-icon icon="solar:check-circle-bold" class="shrink-0 mt-0.5" style="color: var(--accent-mint)"></iconify-icon>
+                    <p class="text-sm" style="color: var(--text-dim)">AI-generated structured proposal drafts via Gemini</p>
+                  </div>
+                  <div class="flex items-start gap-3">
+                    <iconify-icon icon="solar:check-circle-bold" class="shrink-0 mt-0.5" style="color: var(--accent-mint)"></iconify-icon>
+                    <p class="text-sm" style="color: var(--text-dim)">Telegram bot interface for non-technical users</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex flex-wrap gap-2">
+                <span class="tag">Python</span>
+                <span class="tag">FastAPI</span>
+                <span class="tag">Gemini AI</span>
+                <span class="tag">OCR</span>
+                <span class="tag">Telegram Bot API</span>
+                <span class="tag">Async Processing</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
          
-          <!-- ReefSecure -->
+          <!-- ReefSecure — FIX 10: Expanded description -->
           <article class="project-card">
-            <!-- <div class="project-image" style="background-image: url('assets/images/reefsecure.png')"></div> -->
             <div class="p-8">
               <div class="flex justify-between items-start mb-4">
-                <h4 class="text-xl font-bold">ReefSecure</h4>
-                <iconify-icon icon="solar:shield-check-bold" class="accent-text text-xl"></iconify-icon>
+                <h4 class="text-xl font-black">ReefSecure</h4>
+                <iconify-icon icon="solar:shield-check-bold" class="text-xl" style="color: var(--accent-mint)"></iconify-icon>
               </div>
-              <p class="text-sm text-text-dim mb-6">
-                A scalable phishing awareness platform. Engineered core simulation engines and orchestrated high-volume delivery.
+              <p class="text-sm mb-2 font-bold tracking-widest" style="color: var(--accent-mint)">Phishing Awareness & Security Simulation</p>
+              <p class="text-sm mb-4" style="color: var(--text-dim)">
+                Scalable security awareness platform with phishing simulation APIs covering email spoofing and credential harvesting scenarios for employee training.
+              </p>
+              <p class="text-sm mb-6" style="color: var(--text-dim)">
+                Migrated database from <span class="text-white">SQLite → PostgreSQL</span> with connection pooling, resolving production concurrency failures. Built <span class="text-white">Celery + Redis async pipeline</span> for bulk email delivery, decoupling high-volume sending from the main application thread.
               </p>
               <div class="flex flex-wrap gap-2 mb-8">
                 <span class="tag">FastAPI</span>
                 <span class="tag">Celery</span>
-                <span class="tag">Postgres</span>
+                <span class="tag">PostgreSQL</span>
+                <span class="tag">Redis</span>
+                <span class="tag">REST API</span>
               </div>
-              <a href="https://reefsecure.eu/" target="_blank" class="text-[10px] font-bold uppercase tracking-widest accent-text hover:underline underline-offset-8 transition-all">Launch System</a>
+              <a href="https://reefsecure.eu/" target="_blank" class="text-[10px] font-bold uppercase tracking-widest hover:underline underline-offset-8 transition-all" style="color: var(--accent-mint)">Launch System →</a>
+            </div>
+          </article>
+
+          <!-- Enterprise CRM & HRMS -->
+          <article class="project-card">
+            <div class="p-8">
+              <div class="flex justify-between items-start mb-4">
+                <h4 class="text-xl font-black">Enterprise CRM & HRMS</h4>
+                <iconify-icon icon="solar:globus-bold" class="text-xl" style="color: var(--accent-mint)"></iconify-icon>
+              </div>
+              <p class="text-sm mb-2 font-bold tracking-widest" style="color: var(--accent-mint)">Multi-Domain Backend Platform</p>
+              <p class="text-sm mb-6" style="color: var(--text-dim)">
+                Enterprise-grade backend consolidating CRM lead pipelines, HRMS employee lifecycle, attendance workflows, and project tracking into a unified API ecosystem. Features hierarchical <span class="text-white">RBAC engine</span> with complex permission guards and <span class="text-white">Redis caching</span> for performance optimization. Deployed via Docker Compose with GitHub Actions CI/CD.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-8">
+                <span class="tag">FastAPI</span>
+                <span class="tag">PostgreSQL</span>
+                <span class="tag">Redis</span>
+                <span class="tag">Docker</span>
+                <span class="tag">GitHub Actions</span>
+                <span class="tag">JWT</span>
+                <span class="tag">RBAC</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-[10px] font-bold uppercase tracking-widest" style="color: rgba(160,160,160,0.6)">Private Project</span>
+              </div>
             </div>
           </article>
 
           <!-- RangersFx -->
           <article class="project-card">
-            <!-- <div class="project-image" style="background-image: url('assets/images/rangersfx.png')"></div> -->
             <div class="p-8">
               <div class="flex justify-between items-start mb-4">
-                <h4 class="text-xl font-bold">RangersFx</h4>
-                <iconify-icon icon="solar:graph-up-bold" class="accent-text text-xl"></iconify-icon>
+                <h4 class="text-xl font-black">RangersFx</h4>
+                <iconify-icon icon="solar:graph-up-bold" class="text-xl" style="color: var(--accent-mint)"></iconify-icon>
               </div>
-              <p class="text-sm text-text-dim mb-6">
-                Financial trading backend infrastructure. Implemented modular business logic using factory patterns.
-              </p>
-              <div class="flex flex-wrap gap-2 mb-8">
-                <span class="tag">Flask</span>
-                <span class="tag">SQLAlchemy</span>
-                <span class="tag">RBAC</span>
-              </div>
-              <a href="https://www.rangersfx.com/" target="_blank" class="text-[10px] font-bold uppercase tracking-widest accent-text hover:underline underline-offset-8 transition-all">Launch System</a>
-            </div>
-          </article>
-           <!-- Enterprise CRM & HRMS Suite -->
-          <article class="project-card">
-            <!-- <div class="project-image" style="background-image: url('assets/images/hrms.png')"></div> -->
-            <div class="p-8">
-              <div class="flex justify-between items-start mb-4">
-                <h4 class="text-xl font-bold">Enterprise CRM & HRMS</h4>
-                <iconify-icon icon="solar:globus-bold" class="accent-text text-xl"></iconify-icon>
-              </div>
-              <p class="text-sm text-text-dim mb-6">
-                A comprehensive, enterprise-grade suite built to streamline business operations. Centralizes lead management, project tracking, and employee lifecycle management into a single, scalable ecosystem.
+              <p class="text-sm mb-2 font-bold tracking-widest" style="color: var(--accent-mint)">Financial Trading Backend System</p>
+              <p class="text-sm mb-6" style="color: var(--text-dim)">
+                Secure REST API backend for a financial trading platform. Implemented centralized error-handling middleware and audit-ready request logging for compliant financial data processing. Applied the <span class="text-white">Factory Design Pattern</span> to standardize response models, and integrated <span class="text-white">Redis caching</span> to reduce repetitive database queries.
               </p>
               <div class="flex flex-wrap gap-2 mb-8">
                 <span class="tag">FastAPI</span>
-                <span class="tag">MongoDB</span>
+                <span class="tag">PostgreSQL</span>
+                <span class="tag">JWT</span>
+                <span class="tag">RBAC</span>
                 <span class="tag">Redis</span>
-                <span class="tag">Docker</span>
-                <span class="tag">GitHub Actions</span>
+                <span class="tag">Factory Pattern</span>
               </div>
-              <div class="flex items-center gap-2">
-                <span class="text-[10px] font-bold uppercase tracking-widest text-text-dim/60">Private Project</span>
-              </div>
+              <a href="https://www.rangersfx.com/" target="_blank" class="text-[10px] font-bold uppercase tracking-widest hover:underline underline-offset-8 transition-all" style="color: var(--accent-mint)">Launch System →</a>
             </div>
           </article>
 
-          
-          <!-- Kameti Ledger -->
+          <!-- Kameti Ledger — FIX 11: Added context explanation -->
           <article class="project-card">
-            <!-- <div class="project-image" style="background-image: url('assets/images/kameti_ledger.png')"></div> -->
             <div class="p-8">
               <div class="flex justify-between items-start mb-4">
-                <h4 class="text-xl font-bold">Kameti Ledger</h4>
-                <iconify-icon icon="solar:wallet-bold" class="accent-text text-xl"></iconify-icon>
+                <h4 class="text-xl font-black">Kameti Ledger</h4>
+                <iconify-icon icon="solar:wallet-bold" class="text-xl" style="color: var(--accent-mint)"></iconify-icon>
               </div>
-              <p class="text-sm text-text-dim mb-6">
-                Digital tracking for community savings. Features secure OTP auth and smart rebalancing algorithms.
+              <p class="text-sm mb-2 font-bold tracking-widest" style="color: var(--accent-mint)">Community Rotating Savings Platform</p>
+              <p class="text-sm mb-6" style="color: var(--text-dim)">
+                Digital ledger for <span class="text-white">rotating savings groups (chit funds)</span> — where members contribute monthly and take turns receiving the pooled amount. Features secure OTP authentication, automated member tracking, and smart rebalancing algorithms to handle missed contributions and cycle adjustments.
               </p>
               <div class="flex flex-wrap gap-2 mb-8">
                 <span class="tag">Flask</span>
                 <span class="tag">SQLite</span>
                 <span class="tag">SMTP</span>
+                <span class="tag">OTP Auth</span>
               </div>
-               <a href="https://kametiledger.netlify.app/" target="_blank" class="text-[10px] font-bold uppercase tracking-widest accent-text hover:underline underline-offset-8 transition-all">Launch System</a>
+              <a href="https://kametiledger.netlify.app/" target="_blank" class="text-[10px] font-bold uppercase tracking-widest hover:underline underline-offset-8 transition-all" style="color: var(--accent-mint)">Launch System →</a>
             </div>
           </article>
 
-          <!-- AI-Driven RFP Assistant -->
+          <!-- SmartChat AI — FIX 12: Replaced OpenAI with Ollama/LLaMA 3 -->
           <article class="project-card">
-            <!-- <div class="project-image" style="background-image: url('assets/images/rfp-bot.png')"></div> -->
             <div class="p-8">
               <div class="flex justify-between items-start mb-4">
-                <h4 class="text-xl font-bold">AI RFP Assistant Bot</h4>
-                <iconify-icon icon="solar:magic-stick-3-bold" class="accent-text text-xl"></iconify-icon>
+                <h4 class="text-xl font-black">SmartChat AI</h4>
+                <iconify-icon icon="solar:cpu-bold" class="text-xl" style="color: var(--accent-mint)"></iconify-icon>
               </div>
-              <p class="text-sm text-text-dim mb-6">
-                Automated the manual RFP review process by 80% through an AI assistant. Extracts critical metadata and generates proposal drafts using Gemini AI, enabling faster response times.
-              </p>
-              <div class="flex flex-wrap gap-2 mb-8">
-                <span class="tag">Python</span>
-                <span class="tag">Gemini AI</span>
-                <span class="tag">OCR</span>
-                <span class="tag">Telegram Bot</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <span class="text-[10px] font-bold uppercase tracking-widest text-text-dim/60">Private Project</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- SmartChat AI -->
-          <article class="project-card">
-            <!-- <div class="project-image" style="background-image: url('assets/images/smartchat.png')"></div> -->
-            <div class="p-8">
-              <div class="flex justify-between items-start mb-4">
-                <h4 class="text-xl font-bold">SmartChat AI</h4>
-                <iconify-icon icon="solar:cpu-bold" class="accent-text text-xl"></iconify-icon>
-              </div>
-              <p class="text-sm text-text-dim mb-6">
-                AI-powered chatbot integration. Real-time streaming chat responses using Ollama and FastAPI.
+              <p class="text-sm mb-2 font-bold tracking-widest" style="color: var(--accent-mint)">LLM-Powered Streaming Chatbot Backend</p>
+              <p class="text-sm mb-6" style="color: var(--text-dim)">
+                AI-powered chatbot backend integrating <span class="text-white">LLaMA 3 via Ollama</span> with a FastAPI async backend. Delivers real-time streaming chat responses using FastAPI's StreamingResponse. Designed for low-latency, high-concurrency LLM inference with efficient async endpoint architecture.
               </p>
               <div class="flex flex-wrap gap-2 mb-8">
                 <span class="tag">FastAPI</span>
-                <span class="tag">OpenAI</span>
+                <span class="tag">LLaMA 3</span>
+                <span class="tag">Ollama</span>
+                <span class="tag">AsyncIO</span>
+                <span class="tag">Streaming APIs</span>
                 <span class="tag">Docker</span>
               </div>
-              <span class="text-[10px] font-bold uppercase tracking-widest text-text-dim">In Development</span>
+              <span class="text-[10px] font-bold uppercase tracking-widest" style="color: var(--text-dim)">In Development</span>
             </div>
           </article>
         </div>
       </section>
 
-      <!-- Establish Connection -->
+      <!-- Resume Download Section — FIX 13: New dedicated section -->
+      <section id="resume" class="fade-in-up" style="margin-top: 32px;">
+        <div class="glass-card text-center py-16">
+          <span class="section-num text-center block">05 // RESUME</span>
+          <h2 class="text-4xl md:text-5xl font-black mb-6">DOWNLOAD<br/><span style="color: var(--accent-mint)">MY RESUME</span></h2>
+          <p class="text-base mb-10 max-w-lg mx-auto" style="color: var(--text-dim)">
+            Full resume covering experience, projects, tech stack, and architecture approach. Updated May 2026.
+          </p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="https://drive.google.com/file/d/1qHvaqj4l4ZQeSL5QWSnSfrYlDWkmzCKY/view?usp=drive_link" target="_blank" class="btn-primary flex items-center gap-3 !px-12">
+              <iconify-icon icon="solar:file-download-bold" class="text-xl"></iconify-icon>
+              Download Resume (PDF)
+            </a>
+            <a href="#contact" class="btn-outline !px-12">Get In Touch</a>
+          </div>
+          <div class="flex justify-center gap-8 mt-10 pt-10 border-t" style="border-color: var(--border-color)">
+            <div class="text-center">
+              <p class="text-2xl font-black" style="color: var(--accent-mint)">1.5+</p>
+              <p class="text-[10px] font-bold uppercase tracking-widest" style="color: var(--text-dim)">Years Experience</p>
+            </div>
+            <div class="text-center">
+              <p class="text-2xl font-black" style="color: var(--accent-mint)">6</p>
+              <p class="text-[10px] font-bold uppercase tracking-widest" style="color: var(--text-dim)">Projects Shipped</p>
+            </div>
+            <div class="text-center">
+              <p class="text-2xl font-black" style="color: var(--accent-mint)">15</p>
+              <p class="text-[10px] font-bold uppercase tracking-widest" style="color: var(--text-dim)">Days Notice Period</p>
+            </div>
+            <div class="text-center">
+              <p class="text-2xl font-black" style="color: var(--accent-mint)">80%</p>
+              <p class="text-[10px] font-bold uppercase tracking-widest" style="color: var(--text-dim)">RFP Process Automated</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
       <section id="contact" class="fade-in-up" style="margin-top: 32px;">
         <div class="glass-card">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-            <!-- Left Side: Details -->
             <div class="space-y-8">
               <div>
-                <span class="section-num !mb-4">05 // CONTACT</span>
-                <h2 class="text-5xl md:text-7xl font-black leading-[0.9] mb-8">ESTABLISH<br/><span class="accent-text">CONNECTION</span></h2>
+                <span class="section-num !mb-4">06 // CONTACT</span>
+                <h2 class="text-5xl md:text-7xl font-black leading-[0.9] mb-8">ESTABLISH<br/><span style="color: var(--accent-mint)">CONNECTION</span></h2>
               </div>
-              <p class="text-lg md:text-xl text-text-dim leading-relaxed max-w-md">
-                Open for high-impact backend engineering opportunities and technical consultations. 
-                Let's build something technically sound.
+              <p class="text-lg md:text-xl leading-relaxed max-w-md" style="color: var(--text-dim)">
+                Open for Python Backend Engineer, FastAPI Developer, and Backend Engineer (Python) roles. 15-day notice period. Available for remote and on-site opportunities.
               </p>
             </div>
 
-            <!-- Right Side: Contact Info & Action -->
             <div class="flex flex-col gap-10">
               <div class="space-y-6">
                 <div class="flex items-center gap-6 group">
-                  <div class="w-12 h-12 rounded-full bg-accent-mint/5 border border-accent-mint/20 flex items-center justify-center group-hover:border-accent-mint transition-colors">
-                    <iconify-icon icon="solar:letter-bold" class="text-accent-mint text-xl"></iconify-icon>
+                  <div class="w-12 h-12 rounded-full flex items-center justify-center transition-colors" style="background: rgba(0,255,157,0.05); border: 1px solid rgba(0,255,157,0.2)">
+                    <iconify-icon icon="solar:letter-bold" class="text-xl" style="color: var(--accent-mint)"></iconify-icon>
                   </div>
                   <div>
-                    <span class="text-[10px] font-bold text-text-dim uppercase tracking-widest block mb-1">Email</span>
-                    <a href="mailto:yadavanilkumar8113@gmail.com" class="text-sm md:text-base font-bold hover:text-accent-mint transition-colors tracking-tight">yadavanilkumar8113@gmail.com</a>
+                    <span class="text-[10px] font-bold uppercase tracking-widest block mb-1" style="color: var(--text-dim)">Email</span>
+                    <a href="mailto:yadavanilkumar8113@gmail.com" class="text-sm md:text-base font-bold tracking-tight transition-colors hover:text-white" style="color: white">yadavanilkumar8113@gmail.com</a>
                   </div>
                 </div>
 
                 <div class="flex items-center gap-6 group">
-                  <div class="w-12 h-12 rounded-full bg-accent-mint/5 border border-accent-mint/20 flex items-center justify-center group-hover:border-accent-mint transition-colors">
-                    <iconify-icon icon="solar:phone-calling-bold" class="text-accent-mint text-xl"></iconify-icon>
+                  <div class="w-12 h-12 rounded-full flex items-center justify-center transition-colors" style="background: rgba(0,255,157,0.05); border: 1px solid rgba(0,255,157,0.2)">
+                    <iconify-icon icon="solar:phone-calling-bold" class="text-xl" style="color: var(--accent-mint)"></iconify-icon>
                   </div>
                   <div>
-                    <span class="text-[10px] font-bold text-text-dim uppercase tracking-widest block mb-1">Phone</span>
-                    <a href="tel:+919817114961" class="text-sm md:text-base font-bold hover:text-accent-mint transition-colors tracking-tight">+91 9817114961</a>
+                    <span class="text-[10px] font-bold uppercase tracking-widest block mb-1" style="color: var(--text-dim)">Phone</span>
+                    <a href="tel:+919817114961" class="text-sm md:text-base font-bold tracking-tight transition-colors hover:text-white" style="color: white">+91 9817114961</a>
                   </div>
                 </div>
               </div>
 
+              <!-- FIX 14: Updated LinkedIn URL -->
               <div class="flex items-center gap-6">
-                <a href="https://linkedin.com/in/ak-y-981-anilkumar/" target="_blank" class="text-[10px] font-bold uppercase tracking-[0.2em] text-text-dim hover:text-accent-mint transition-colors">LinkedIn</a>
-                <span class="w-1 h-1 bg-border-color rounded-full"></span>
-                <a href="https://github.com/anil-kumar981" target="_blank" class="text-[10px] font-bold uppercase tracking-[0.2em] text-text-dim hover:text-accent-mint transition-colors">GitHub</a>
+                <a href="https://www.linkedin.com/in/anilkumar-python-backend/" target="_blank" class="text-[10px] font-bold uppercase tracking-[0.2em] transition-colors hover:text-white" style="color: var(--text-dim)">LinkedIn</a>
+                <span class="w-1 h-1 rounded-full" style="background: var(--border-color)"></span>
+                <a href="https://github.com/anil-kumar981" target="_blank" class="text-[10px] font-bold uppercase tracking-[0.2em] transition-colors hover:text-white" style="color: var(--text-dim)">GitHub</a>
+                <span class="w-1 h-1 rounded-full" style="background: var(--border-color)"></span>
+                <a href="https://drive.google.com/file/d/1qHvaqj4l4ZQeSL5QWSnSfrYlDWkmzCKY/view?usp=drive_link" target="_blank" class="text-[10px] font-bold uppercase tracking-[0.2em] transition-colors" style="color: var(--accent-mint)">Resume ↓</a>
               </div>
 
               <a href="mailto:yadavanilkumar8113@gmail.com" class="btn-primary text-center !w-full md:!w-max">SAY HELLO</a>
@@ -848,12 +965,12 @@
         </div>
       </section>
 
-      <footer class="py-12 border-t border-border-color flex flex-col md:flex-row justify-between items-center gap-6">
-        <div class="text-[10px] font-bold uppercase tracking-widest text-text-dim">
-          © 2025 ARCHITECTED BY ANIL KUMAR.
+      <footer class="py-12 border-t flex flex-col md:flex-row justify-between items-center gap-6" style="border-color: var(--border-color)">
+        <div class="text-[10px] font-bold uppercase tracking-widest" style="color: var(--text-dim)">
+          © 2025 ARCHITECTED BY ANIL KUMAR — PYTHON BACKEND ENGINEER
         </div>
         <div class="flex gap-6">
-          <a href="#home" class="text-[10px] font-bold uppercase tracking-widest text-text-dim hover:text-white transition-colors">BACK TO TOP</a>
+          <a href="#home" class="text-[10px] font-bold uppercase tracking-widest transition-colors hover:text-white" style="color: var(--text-dim)">BACK TO TOP</a>
         </div>
       </footer>
     </main>
